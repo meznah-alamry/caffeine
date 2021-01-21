@@ -43,17 +43,17 @@ export default function Singup(props) {
 
                 <div className="form-group">
                     <label>Name </label>
-                    <input  onChange={(e) => onChangeInput(e)} type="name" className="form-control" placeholder="Enter name" />
+                    <input  onChange={(e) => onChangeInput(e)} type="name" className="form-control" name="name" placeholder="Enter name" />
                 </div>
 
                 <div className="form-group">
                     <label>Email address</label>
-                    <input  onChange={(e) => onChangeInput(e)} type="email" className="form-control" placeholder="Enter email" />
+                    <input  onChange={(e) => onChangeInput(e)} type="email" className="form-control" name="email" placeholder="Enter email" />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group"> 
                     <label>Password</label>
-                    <input   onChange={(e) => onChangeInput(e)}type="password" className="form-control" placeholder="Enter password" />
+                    <input   onChange={(e) => onChangeInput(e)} type="password"                  name="password" className="form-control" placeholder="Enter password" />
                 </div>
 
             

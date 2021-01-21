@@ -41,12 +41,12 @@ export default function Login(props) {
 
                 <div className="form-group">
                     <label>Email address</label>
-                    <input  onChange={(e) => onChangeInput(e)} type="email" className="form-control" placeholder="Enter email" />
+                    <input  onChange={(e) => onChangeInput(e)} type="email" className="form-control" name="email" placeholder="Enter email" />
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input   onChange={(e) => onChangeInput(e)} type="password" className="form-control" placeholder="Enter password" />
+                    <input   onChange={(e) => onChangeInput(e)} type="password" name="password" className="form-control" placeholder="Enter password" />
                 </div>
 
             

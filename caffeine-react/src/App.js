@@ -3,27 +3,26 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
+// import "./style/nav-bar.css";
+// import "./style/footer.css";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-
-
+import HomePage from "./pages/HomePage";
 
 function App() {
- 
-  const [dataLoading, setDataloading] = useState(false)
+  const [dataLoading, setDataloading] = useState(false);
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
 
   const userLogin = () => {
     if (localStorage.jwtToken) {
       const jwtToken = localStorage.jwtToken;
-      const currentUser = jwt_decode(jwtToken, "SECRET").user;
+      const currentUser = jwt_decode(jwtToken, process.env.SECRET_KEY).user;
       setAuth({ currentUser, isLoggedIn: true });
     } else {
       setAuth({ currentUser: null, isLoggedIn: false });
     }
 
-    setDataloading(true)
+    setDataloading(true);
     console.log("The current User is: ", auth.currentUser);
   };
 
@@ -31,23 +30,21 @@ function App() {
 
   return (
     <div className="">
-      { dataLoading &&
+      {dataLoading && (
         <Router>
-         
-        
+          <Route exact path="/">
+            <HomePage />
+          </Route>
 
-          <Route path="/login">
+          <Route exact path="/login">
             <Login loginCallback={userLogin} />
           </Route>
 
-          <Route path="/signup">
+          <Route exact path="/signup">
             <Signup loginCallback={userLogin} />
           </Route>
-
-          
-
         </Router>
-      }
+      )}
     </div>
   );
 }

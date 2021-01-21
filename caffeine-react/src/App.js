@@ -2,12 +2,20 @@ import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import "bootstrap/dist/css/bootstrap.min.css";
+// styles
 import "./App.css";
-// import "./style/nav-bar.css";
-// import "./style/footer.css";
+import "./style/nav-bar.css";
+import "./style/footer.css";
+import "./style/section.css";
+import "./style/new-product.css";
+// pages
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/Home";
+import NewProduct from "./pages/NewProduct";
+// components
+import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 
 function App() {
   const [dataLoading, setDataloading] = useState(false);
@@ -30,6 +38,7 @@ function App() {
 
   return (
     <div className="">
+      <NavBar />
       {dataLoading && (
         <Router>
           <Route exact path="/">
@@ -43,8 +52,13 @@ function App() {
           <Route exact path="/signup">
             <Signup loginCallback={userLogin} />
           </Route>
+
+          <Route exact path="/new-product">
+            <NewProduct />
+          </Route>
         </Router>
       )}
+      <Footer />
     </div>
   );
 }

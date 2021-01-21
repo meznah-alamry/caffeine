@@ -1,6 +1,6 @@
 
-.footer-bar{
-    position: static;
+.Footer .footer-bar{
+    position: fixed;
     bottom:0;
     width:100%;
     height: 50px;
@@ -8,6 +8,6 @@
 }
 
 
-.nav-bar-elements{
+.Footer .nav-bar-elements{
     margin: auto;
 }

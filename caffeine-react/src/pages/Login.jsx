@@ -45,7 +45,7 @@ export default function Login(props) {
                 </div>
 
                 <div className="form-group">
-                    <label>Password</label>
+                    <label>Password  :</label>
                     <input   onChange={(e) => onChangeInput(e)} type="password" className="form-control" placeholder="Enter password" />
                 </div>
 

@@ -4,7 +4,9 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 export default function Section() {
     const cardNum = [1,2,3,4,5]
     const cards =  cardNum.map(()=>{
-        return (          <Col>
+        return ( 
+             
+             <Col>
 
             <Container className="card-container">
                 <Card className="card-ov" style={{ width: "15rem" }}>
@@ -21,13 +23,14 @@ export default function Section() {
                   </Card.Body>
                 </Card>
               </Container>
-           </Col>)
+           </Col>
+           )
     })
              
         
 
   return (
-    <>
+    <div className="Section">
       <Container fluid className="container-section-ov">
         <Row>
           <Col sm={3} className="img-art">
@@ -55,6 +58,6 @@ export default function Section() {
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   );
 }

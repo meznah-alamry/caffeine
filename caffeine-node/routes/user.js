@@ -86,6 +86,7 @@ router.post('/forgot' , (req,res)=>{
 
 
   User.findOne({email: req.body.email}, function (err, foundUser) {
+    
     password = req.body.password;
     console.log(foundUser);
     bcrypt.genSalt((err, salt) => {

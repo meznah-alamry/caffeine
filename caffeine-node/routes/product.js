@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Product = require('../models/product')
 
-router.get("/", (req, res) => {
+router.get("/products", (req, res) => {
     Product.find()
       .then((products) => {
         res.json({ msg: products });
@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
       .catch((err) => res.json({ msg: err }));
   });
 
-router.post("/product", (req, res) => {
+router.post("/new-product", (req, res) => {
     console.log(req.body);
     const { title ,description , img ,price ,state } = req.body;
 

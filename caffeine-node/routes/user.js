@@ -80,6 +80,35 @@ router.get("/:token", (req, res) => {
 
     res.json({ msg: "User decoded", user });
   });
-});
+}); 
+
+router.post('/forgot' , (req,res)=>{
+
+
+  User.findOne({email: req.body.email}, function (err, foundUser) {
+    password = req.body.password;
+    console.log(foundUser);
+    bcrypt.genSalt((err, salt) => {
+      // changes every time
+      console.log("bcrypt salt:", salt);
+      bcrypt.hash(password, salt, (err, passwordHash) => {
+          console.log("password:", password);
+          console.log("passwordHash:", passwordHash);
+          User.updateOne({ email :req.body.email },{password: passwordHash }, (err, newUser) => {
+            
+             
+          });
+      });
+  });
+    if (!foundUser) {
+      console.log('No user with email ' + email);
+    
+  
+    }  
+
+  })
+
+})
+
 
 module.exports = router;

@@ -12,7 +12,7 @@ export default function ShowOneProduct(props) {
 
     useEffect(() => {
         if (!title) {  
-            axios.get('http://localhost:5000/api/user/products')
+            axios.get('http://localhost:5000/api/product/products')
                 .then(res => {
                     let product = res.data.find(ele => ele._id == id)
                     setSelectProduct(product)

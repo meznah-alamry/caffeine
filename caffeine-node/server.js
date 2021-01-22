@@ -18,5 +18,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use("/api/user", require("./routes/user"));
+app.use("/api/product", require("./routes/product"));
 
 app.listen(PORT, () => console.log(`server running in ${PORT}`));

@@ -11,14 +11,15 @@ import "./style/new-product.css";
 // pages
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-
+import ShowOneProduct from "./pages/ShowOneProduct";
+import Products from "./pages/Products";
 import HomePage from "./pages/Home";
 import NewProduct from "./pages/NewProduct";
 // components
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 
-import ShowOneProduct from "./pages/ShowOneProduct";
+
 
 
 function App() {
@@ -60,7 +61,7 @@ function App() {
 
 
           <Route exact path="/new-product">
-            <NewProduct />
+            <NewProduct loginCallback={userLogin}/>
           </Route>
 
           <Route path="/products/:id">

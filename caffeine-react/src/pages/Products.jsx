@@ -12,11 +12,12 @@ export default function Products(props) {
     const [products , setProducts] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/user/products') //have to check the path in backend
+        axios.get('http://localhost:5000/api/product/products') //have to check the path in backend
         .then(res =>{     
-            setProducts(res.data)
+            setProducts(res.data.msg)
         })
     }, [])
+
 
    const  allProducts = products.map(product =>{
 
@@ -28,21 +29,16 @@ export default function Products(props) {
     <>
       <div>
       <ShoppingCartIcon fontSize="inherit" style={{ fontSize: "50px", color: "blue"}} />
-      <Link to='/new_product'> <Button class="btn btn-primary btn-lg float-right"> Add New Product</Button> </Link>
+      <Link to='/new-product'> <Button class="btn btn-primary btn-lg float-right"> Add New Product</Button> </Link>
             <Container >
                 <h1 className="mt-5" style={{ textAlign: "center" }}>All products</h1>
 
                 {/* Products Cards */}
                 <Row className="justify-content-md-center">
                    
-                    {/* {allProducts} */}
+                    {allProducts}
                     
-                    <OneProduct />
-                    <OneProduct />
-                    <OneProduct />
-                    <OneProduct />
-                    <OneProduct />
-                    <OneProduct />
+
                    
                 </Row>
 

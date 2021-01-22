@@ -11,15 +11,20 @@ import "./style/new-product.css";
 // pages
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+
 import HomePage from "./pages/Home";
 import NewProduct from "./pages/NewProduct";
 // components
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 
+import ShowOneProduct from "./pages/ShowOneProduct";
+
+
 function App() {
   const [dataLoading, setDataloading] = useState(false);
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
+  const [selectProduct, setSelectProduct] = useState({})
 
   const userLogin = () => {
     if (localStorage.jwtToken) {
@@ -53,9 +58,20 @@ function App() {
             <Signup loginCallback={userLogin} />
           </Route>
 
+
           <Route exact path="/new-product">
             <NewProduct />
           </Route>
+
+          <Route path="/products/:id">
+            <ShowOneProduct selectProduct={selectProduct} />
+          </Route>
+
+          <Route exact path="/products">
+            <Products setSelectProduct={setSelectProduct} />
+          </Route>
+
+
         </Router>
       )}
       <Footer />

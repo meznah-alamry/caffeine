@@ -37,7 +37,7 @@ export default function Login(props) {
 
   return (
     <form>
-                <h3>Login</h3>
+                <h3> Login </h3>
 
                 <div className="form-group">
                     <label>Email address</label>

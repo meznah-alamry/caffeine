@@ -37,7 +37,7 @@ export default function Forgot(props) {
 
   return (
     <form>
-                <h3>Reset</h3>
+                <h3>Reset your password</h3>
 
                 <div className="form-group">
                     <label>Email address</label>

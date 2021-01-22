@@ -8,10 +8,13 @@ import "./App.css";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import HomePage from "./pages/HomePage";
+import Products from "./pages/Products";
+import ShowOneProduct from "./pages/ShowOneProduct";
 
 function App() {
   const [dataLoading, setDataloading] = useState(false);
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
+  const [selectProduct, setSelectProduct] = useState({})
 
   const userLogin = () => {
     if (localStorage.jwtToken) {
@@ -43,6 +46,15 @@ function App() {
           <Route exact path="/signup">
             <Signup loginCallback={userLogin} />
           </Route>
+
+          <Route path="/products/:id">
+            <ShowOneProduct selectProduct={selectProduct} />
+          </Route>
+
+          <Route exact path="/products">
+            <Products setSelectProduct={setSelectProduct} />
+          </Route>
+
         </Router>
       )}
     </div>

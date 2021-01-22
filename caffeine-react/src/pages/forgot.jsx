@@ -2,10 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Form, Button, Col, Row } from "react-bootstrap";
-
-export default function Login(props) {
+//new page
+export default function Forgot(props) {
   const history = useHistory();
-  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [credentials, setCredentials] = useState({  password: "" });
 
   const onChangeInput = (event) => {
     const { name, value } = event.target;
@@ -18,9 +18,9 @@ export default function Login(props) {
   const onSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:5000/api/user/login", credentials)
+      .post("http://localhost:5000/api/user/forgot", credentials)
       .then((res) => {
-        console.log("Express backend /login response", res);
+        console.log("Express backend /forgot response", res);
 
         const token = res.data.token;
         const msg = res.data.msg;
@@ -28,7 +28,7 @@ export default function Login(props) {
         if (token) {
           localStorage.setItem("jwtToken", token);
           props.loginCallback();
-          history.push("/");
+          history.push("/login");
         } else {
           console.log("Login error: ", msg);
         }
@@ -37,7 +37,7 @@ export default function Login(props) {
 
   return (
     <form>
-                <h3>Login</h3>
+                <h3>Reset</h3>
 
                 <div className="form-group">
                     <label>Email address</label>
@@ -49,12 +49,14 @@ export default function Login(props) {
                     <input   onChange={(e) => onChangeInput(e)} type="password" name="password" className="form-control" placeholder="Enter password" />
                 </div>
 
-            
+                <div className="form-group">
+                    <label>confirm your password</label>
+                    <input   onChange={(e) => onChangeInput(e)} type="password" name="confirmPassword" className="form-control" placeholder="Enter password" />
+                </div>
+
 
                 <button  onClick={(e) => onSubmit(e)} type="submit" className="btn btn-primary btn-block">Submit</button>
-                <p className="forgot-password text-right">
-                    Forgot <Link to ="/forgot">password?</Link>
-                </p>
+                
             </form>
 
    

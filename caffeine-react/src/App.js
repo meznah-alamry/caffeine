@@ -8,6 +8,7 @@ import "./App.css";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import HomePage from "./pages/HomePage";
+import Forgot from "./pages/forgot";
 
 function App() {
   const [dataLoading, setDataloading] = useState(false);
@@ -43,7 +44,19 @@ function App() {
           <Route exact path="/signup">
             <Signup loginCallback={userLogin} />
           </Route>
-        </Router>
+
+
+          <Route exact path="/forgot">
+
+
+
+            <Forgot loginCallback={userLogin} />
+
+            
+          </Route> 
+
+
+        </Router> 
       )}
     </div>
   );

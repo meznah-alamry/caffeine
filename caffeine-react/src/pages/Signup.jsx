@@ -16,6 +16,7 @@ export default function Singup(props) {
   // to add the user info to database
   const onSubmit = (event) => {
     event.preventDefault();
+    
     axios
       .post("http://localhost:5000/api/user/register", user)
       .then((res) => {

@@ -3,6 +3,7 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 
 export default function Footer() {
     return (
+        <div className="Footer">
         <Navbar className="navbar footer-bar" variant="dark">
         <Container >
         <Nav className="mr-auto nav-bar-elements">
@@ -12,5 +13,6 @@ export default function Footer() {
         </Nav>
         </Container>
       </Navbar>
+      </div>
     )
 }

@@ -4,6 +4,7 @@ import { Navbar, Nav } from "react-bootstrap";
 
 export default function NavBar() {
     return (
+        <div className="NavBar">
         <Navbar className="navbar" variant="dark">
         <Navbar.Brand href="#home">Caffeine</Navbar.Brand>
 
@@ -13,5 +14,6 @@ export default function NavBar() {
           <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
       </Navbar>
+      </div>
     )
 }

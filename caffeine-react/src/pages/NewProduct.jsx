@@ -2,11 +2,14 @@ import React from "react";
 import { Form , Button} from "react-bootstrap";
 import axios from "axios";
 import  {useState}  from 'react';
+import { useHistory } from "react-router-dom";
 
-export default function NewProduct() {
+
+export default function NewProduct(props) {
 
   const [product, setProduct] = useState({}); // product info
-    
+  const history = useHistory();
+
     const onChangeInput = ({ target: { name, value } }) =>{
          setProduct({ ...product, [name]: value });
          
@@ -20,7 +23,9 @@ export default function NewProduct() {
       .post("http://localhost:5000/api/product/new-product", product)
       .then((res) => {
 
+        history.push("/products");
 
+         
       })
       .catch((err) => console.log(err));
       
@@ -34,7 +39,7 @@ export default function NewProduct() {
       <Form className="form">
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label>
-            <b>Title</b>
+            <b>Product Name</b>
           </Form.Label>
           <Form.Control type="text" placeholder="Philips Series 3200 Fully Automatic Espresso Machine" name="title"  onChange={(e) => onChangeInput(e)} />
         </Form.Group>

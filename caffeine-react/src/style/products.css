@@ -1,0 +1,20 @@
+.Products .product{
+    text-align: center;
+}
+ .Products .product:hover{
+     box-shadow: 0px 5px 10px rgb(0, 0, 0);
+  }
+ .Products .product .btn-more-info-space{
+     display: flex;
+     justify-content: center;
+ 
+ }
+ .Products .product .product-description{
+     max-height: 50px;
+ }
+ .Products .product .body-one-product{
+     display:flex ;
+     flex-direction: column;
+     align-self: center;
+ }
+ 

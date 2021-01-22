@@ -6,20 +6,27 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import "./style/nav-bar.css";
 import "./style/footer.css";
-import "./style/section.css";
+import "./style/home.css";
 import "./style/new-product.css";
+import "./style/products.css";
 // pages
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ShowOneProduct from "./pages/ShowOneProduct";
+import Products from "./pages/Products";
 import HomePage from "./pages/Home";
 import NewProduct from "./pages/NewProduct";
 // components
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 
+
+
+
 function App() {
   const [dataLoading, setDataloading] = useState(false);
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
+  const [selectProduct, setSelectProduct] = useState({})
 
   const userLogin = () => {
     if (localStorage.jwtToken) {
@@ -53,9 +60,20 @@ function App() {
             <Signup loginCallback={userLogin} />
           </Route>
 
+
           <Route exact path="/new-product">
-            <NewProduct />
+            <NewProduct loginCallback={userLogin}/>
           </Route>
+
+          <Route path="/products/:id">
+            <ShowOneProduct selectProduct={selectProduct} />
+          </Route>
+
+          <Route exact path="/products">
+            <Products setSelectProduct={setSelectProduct} />
+          </Route>
+
+
         </Router>
       )}
       <Footer />

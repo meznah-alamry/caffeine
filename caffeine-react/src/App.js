@@ -18,6 +18,7 @@ import HomePage from "./pages/Home";
 import NewProduct from "./pages/NewProduct";
 import Forgot from './pages/Forgot';
 //cart
+
 import Cart from './pages/Cart'
 
 // components

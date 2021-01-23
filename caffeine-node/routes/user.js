@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
+const Product = require('../models/product')
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
@@ -112,4 +113,60 @@ router.post('/forgot' , (req,res)=>{
 })
 
 
+router.put("/:userId/:productId", (req, res) => {
+  const productId = req.params.productId
+  const userId = req.params.userId
+
+  Product.findOne({_id: productId}, (err, product)=>{
+    const updateUser = {
+      $push: {
+        products: product
+    }
+    
+  }
+  User.findByIdAndUpdate(userId, updateUser, (err, newUser) => {
+    
+
+    res.json({ msg: "Product Added!"});
+
+  })
+    
+  })
+
+ 
+});
+
+
+router.get('/:userId/cart' , (req,res)=>{
+  const userId = req.params.userId
+
+  User.findOne({_id: userId}).populate('Products')
+  .then(user =>{
+
+    res.json({ msg: "User Info",user});
+
+  })
+
+  
+
+})
+
+
+router.post('/:userId/cart/:productId' , (req,res)=>{
+  const userId = req.params.userId
+  const productId = req.params.productId
+  User.findOne({_id: userId})
+  .then(user => {
+    console.log(user)
+      let userProducts = user.products.filter(product =>{
+        return !(product == productId)
+      })
+      console.log(user.products.length)
+      User.findByIdAndUpdate(userId ,{products :userProducts})
+      .then(user =>{
+          res.json({msg : "Product Has Been Deleted!"})
+      })
+  })
+
+})
 module.exports = router;

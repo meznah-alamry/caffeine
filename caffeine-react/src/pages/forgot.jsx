@@ -50,7 +50,7 @@ export default function Forgot(props) {
                 </div>
 
                 <div className="form-group">
-                    <label>confirm your password</label>
+                    <label>Confirm your password</label>
                     <input   onChange={(e) => onChangeInput(e)} type="password" name="confirmPassword" className="form-control" placeholder="Enter password" />
                 </div>
 

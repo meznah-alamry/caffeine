@@ -17,6 +17,7 @@ import Products from "./pages/Products";
 import HomePage from "./pages/Home";
 import NewProduct from "./pages/NewProduct";
 import Forgot from './pages/Forgot';
+import Cart from './pages/Cart'
 
 // components
 import NavBar from './components/NavBar'
@@ -89,7 +90,13 @@ function App() {
 
           <Route exact path="/products">
             <Products setSelectProduct={setSelectProduct} />
+          </Route> 
+
+
+          <Route exact path="/cart">
+            <Cart  />
           </Route>
+
 
           {/* <Footer /> */}
           

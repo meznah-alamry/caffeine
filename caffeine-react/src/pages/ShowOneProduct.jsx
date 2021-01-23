@@ -9,7 +9,7 @@ export default function ShowOneProduct(props) {
     const { id } = useParams()
     const [selectProduct, setSelectProduct] = useState(props.selectProduct)
     const { title, img, description, price, state } = selectProduct
-
+    const userId = props.auth.currentUser._id
     useEffect(() => {
         if (!title) {  
             axios.get('http://localhost:5000/api/product/products')
@@ -17,15 +17,17 @@ export default function ShowOneProduct(props) {
                     let product = res.data.find(ele => ele._id == id)
                     setSelectProduct(product)
                 })
-
         }
-
+        
     }, [])
 
     const addProductToCart = () => {
 
-        console.log("productId = ", selectProduct._id)
-        
+        axios.put(`http://localhost:5000/api/user/${userId}/${selectProduct._id}`)
+        .then(res => {
+         
+           console.log(res.data.msg)
+        })
     }
 
     return (

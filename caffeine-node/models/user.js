@@ -14,9 +14,10 @@ const userSchema = new mongoose.Schema({
         type :String , 
         required :true
     },
+    products: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}]
 
 } , {timestamps :true})
 
 
-const User = mongoose.model('user' , userSchema)
+const User = mongoose.model('User' , userSchema)
 module.exports = User

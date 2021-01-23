@@ -9,38 +9,45 @@ export default function Cart(props) {
 
     const [alluserProducts, setAluserProducts] = useState([])
     const { name, email, products, _id } = props.auth.currentUser;
-    console.log(products)
+   // console.log(products)
+   
     useEffect(() => {
-      axios.get('http://localhost:5000/api/product/products')
+        console.log(_id)
+      axios.get(`http://localhost:5000/api/user/${_id}/cart`)
         .then(data => {
-          // 
-          let filterProducts = data.msg.filter(product => products.includes(product._id))
+          
+        //   let filterProducts = data.msg.map(product => )
   
-          setAluserProducts(filterProducts)
-        })
+        //   setAluserProducts(filterProducts)
+
+
+       console.log(data)
+       })
   
-    }, [alluserProducts])
+    },  [])
   
-    const deleteProduct = (productId) => {
-      let userId = _id
-      axios.delete(`http://localhost:5000/api/products/${productId}/${userId}`)
-        .then(data => {
-          props.setAuth(pre => ({ ...pre, currentUser: { ...pre.currentUser, products: data.msg.products } }))
-          console.log(data)
+    // const deleteProduct = (productId) => {
+    //   let userId = _id
+    //   axios.delete(`http://localhost:5000/api/products/${productId}/${userId}`)
+    //     .then(data => {
+    //       props.setAuth(pre => ({ ...pre, currentUser: { ...pre.currentUser, products: data.msg.products } }))
+    //       console.log(data)
   
-        })
-        setAluserProducts(products)
+    //     })
+    //     setAluserProducts(products)
   
-    }
+    // }
   
-    const cartProducts= alluserProducts.map(product => <OneCardproduct deleteProduct={deleteProduct} product={product} delete={true} />)
-    return 
-      <Container>
+    // const cartProducts= alluserProducts.map(product => <OneCardproduct deleteProduct={deleteProduct} product={product} delete={true} />)
+    return (<Container>
         <Row >
-          {cartProducts}
+          {/* {cartProducts} */}
+
+          <h1>asim</h1>
         </Row>
   
-      </Container>
+      </Container>)
+      
     
   
   }

@@ -45,9 +45,10 @@ function App() {
 
   return (
     <div className="">
-      <NavBar />
+
       {dataLoading && (
         <Router>
+          <NavBar isLoggedIn={auth.isLoggedIn} loginCallback={userLogin} />
           <Route exact path="/">
             <HomePage />
           </Route>
@@ -74,6 +75,8 @@ function App() {
           <Route exact path="/new-product">
             <NewProduct setAuth = {setAuth}
             auth={auth}/>
+
+
           </Route>
 
           <Route path="/products/:id">

@@ -26,13 +26,12 @@ export default function OneProduct(props) {
               <Row>
                 <Col>
                   <Link to={`/products/${props.product._id}`}>
-                    {" "}
+                   
                     <Button
                       onClick={() => props.setSelectProduct(props.product)}
                     >
-                      {" "}
                       more info
-                    </Button>{" "}
+                    </Button>
                   </Link>
                 </Col>
               </Row>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+//product
 export default function OneProduct(props) {
   return (
     <>

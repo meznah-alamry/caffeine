@@ -40,7 +40,6 @@ export default function Products(props) {
 
             </Container>
 
-            <Footer />
         </div>
 
     </>

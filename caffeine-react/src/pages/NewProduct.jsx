@@ -3,6 +3,8 @@ import { Form , Button} from "react-bootstrap";
 import axios from "axios";
 import  {useState}  from 'react';
 import { Route, Redirect , useHistory} from "react-router-dom";
+
+
 export default function NewProduct(props) {
 
   const [product, setProduct] = useState({}); // product info
@@ -21,8 +23,9 @@ export default function NewProduct(props) {
       .post("http://localhost:5000/api/product/new-product", product)
       .then((res) => {
 
-        
+        history.push("/products");
 
+         
       })
       .catch((err) => console.log(err));
       

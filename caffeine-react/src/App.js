@@ -6,8 +6,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import "./style/nav-bar.css";
 import "./style/footer.css";
-import "./style/section.css";
+import "./style/home.css";
 import "./style/new-product.css";
+import "./style/products.css";
 // pages
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -15,10 +16,14 @@ import ShowOneProduct from "./pages/ShowOneProduct";
 import Products from "./pages/Products";
 import HomePage from "./pages/Home";
 import NewProduct from "./pages/NewProduct";
+import Forgot from './pages/Forgot';
+
 // components
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
-import Forgot from './pages/Forgot';
+
+
+
 
 
 
@@ -61,7 +66,6 @@ function App() {
             <Signup loginCallback={userLogin} />
           </Route>
 
-
           <Route exact path="/forgot">
 
 
@@ -76,21 +80,22 @@ function App() {
             <NewProduct setAuth = {setAuth}
             auth={auth}/>
 
-
           </Route>
 
           <Route path="/products/:id">
             <ShowOneProduct selectProduct={selectProduct} />
+
           </Route>
 
           <Route exact path="/products">
             <Products setSelectProduct={setSelectProduct} />
           </Route>
 
-
+          {/* <Footer /> */}
+          
         </Router>
       )}
-      <Footer />
+      
     </div>
   );
 }

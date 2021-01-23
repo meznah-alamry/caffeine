@@ -41,7 +41,7 @@ export default function ShowOneProduct(props) {
                         <h2> {description}</h2>
                         <h2>{price}</h2>
                         <h2>{state}</h2>
-                        <Button onClick={() => addProductToCart()} className="outline-light" > Add to cart </Button>
+                        <Button onClick={() => addProductToCart()} variant="secondary" size="sm" className="outline-light" > Add to cart </Button>
                     </Col>
                 </Row>
 

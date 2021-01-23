@@ -2,8 +2,7 @@ import React from "react";
 import { Form , Button} from "react-bootstrap";
 import axios from "axios";
 import  {useState}  from 'react';
-import { useHistory } from "react-router-dom";
-
+import { Route, Redirect , useHistory} from "react-router-dom";
 export default function NewProduct(props) {
 
   const [product, setProduct] = useState({}); // product info
@@ -30,7 +29,7 @@ export default function NewProduct(props) {
 
     }
 
-
+    if (props.auth.isLoggedIn) {
 
   return (
     <div className="NewProduct">
@@ -81,4 +80,11 @@ export default function NewProduct(props) {
       </Form>
     </div>
   );
+} else {
+  return (
+    <Route>
+      <Redirect to="/login" />
+    </Route>
+  );
+  }
 }

@@ -18,6 +18,7 @@ import NewProduct from "./pages/NewProduct";
 // components
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
+import Forgot from './pages/Forgot';
 
 
 
@@ -61,8 +62,21 @@ function App() {
           </Route>
 
 
+          <Route exact path="/forgot">
+
+
+
+            <Forgot loginCallback={userLogin} />
+
+            
+          </Route> 
+
+
           <Route exact path="/new-product">
-            <NewProduct loginCallback={userLogin} />
+            <NewProduct setAuth = {setAuth}
+            auth={auth}/>
+
+
           </Route>
 
           <Route path="/products/:id">

@@ -17,10 +17,12 @@ import Products from "./pages/Products";
 import HomePage from "./pages/Home";
 import NewProduct from "./pages/NewProduct";
 import Forgot from './pages/Forgot';
+import ShowOneArticle from './pages/ShowOneArticle';
 
 // components
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
+import NewArticle from "./pages/NewArticle";
 
 
 
@@ -31,7 +33,8 @@ import Footer from './components/Footer'
 function App() {
   const [dataLoading, setDataloading] = useState(false);
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
-  const [selectProduct, setSelectProduct] = useState({})
+  const [selectProduct, setSelectProduct] = useState({});
+  const [selectArtcile, setSelectArticle] = useState({});
 
   const userLogin = () => {
     if (localStorage.jwtToken) {
@@ -55,7 +58,7 @@ function App() {
         <Router>
           <NavBar isLoggedIn={auth.isLoggedIn} loginCallback={userLogin} />
           <Route exact path="/">
-            <HomePage />
+            <HomePage setSelectArticle={setSelectArticle}/>
           </Route>
 
           <Route exact path="/login">
@@ -72,30 +75,38 @@ function App() {
 
             <Forgot loginCallback={userLogin} />
 
-            
-          </Route> 
+
+          </Route>
 
 
           <Route exact path="/new-product">
-            <NewProduct setAuth = {setAuth}
-            auth={auth}/>
+            <NewProduct setAuth={setAuth}
+              auth={auth} />
 
           </Route>
 
           <Route path="/products/:id">
             <ShowOneProduct selectProduct={selectProduct} />
-
           </Route>
 
           <Route exact path="/products">
             <Products setSelectProduct={setSelectProduct} />
           </Route>
 
+          <Route path="/new-article">
+            <NewArticle setAuth={setAuth}
+              auth={auth}/>
+          </Route>
+
+          <Route path="/:article_id/article" >
+            <ShowOneArticle selectArtcile={selectArtcile} />
+          </Route>
+
           {/* <Footer /> */}
-          
+
         </Router>
       )}
-      
+
     </div>
   );
 }

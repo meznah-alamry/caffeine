@@ -1,18 +1,24 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Image } from "react-bootstrap";
+import Articles from "./Articles";
+import axios from 'axios';
 
-export default function Home() {
-  // const [artciles, setArtciles] = useState([]);
+export default function Home(props) {
+  const [articles , setArticles] = useState([])
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:5000/api/product/products") //have to check the path in backend
-  //     .then((res) => {
-  //       setArtciles(res.data.msg);
-  //     });
-  // }, []);
+  useEffect(() => {
+      axios.get('http://localhost:5000/api/article/') 
+      .then(res =>{     
+        setArticles(res.data.msg)
+      })
+  }, [])
 
 
+ const  allArticles = articles.map(article =>{
+
+   return <Articles article= {article} setSelectArticle={props.setSelectArticle} />
+ }) 
 
   return (
     <div className="Home">
@@ -27,7 +33,10 @@ export default function Home() {
         </Row>
         <Row>
           <div className="article-section">
-            <div className="art1">
+          <div className="">
+            {allArticles}
+            </div>
+            {/* <div className="art1">
               <img
                 src="https://media-cdn.tripadvisor.com/media/photo-s/0e/bb/a2/2f/french-butter-croissants.jpg"
                 alt=""
@@ -59,7 +68,7 @@ export default function Home() {
               />
               <h1>Coffee and diabetes</h1>
               <p>Coffee may help protect against type 2 diabetes.</p>
-            </div>
+            </div> */}
           </div>
         </Row>
       </Container>

@@ -1,9 +1,8 @@
 import React from "react";
-import axios from 'axios'
+import axios from 'axios';
 import { useEffect, useState } from "react";
-import { Container, Button, Row  } from 'react-bootstrap'
-import OneProduct from './OneProduct'
-import Footer from "../components/Footer";
+import { Container, Row } from 'react-bootstrap';
+import OneProduct from './OneProduct';
 
 export default function Products(props) {
 
@@ -26,8 +25,7 @@ export default function Products(props) {
   return (
     <>
       <div>
- 
-      
+            
             <Container >
                 <h1 className="mt-5" style={{ textAlign: "center" }}>All products</h1>
 

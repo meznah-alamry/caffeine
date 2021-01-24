@@ -25,8 +25,8 @@ export default function NavBar(props) {
               Signup
           </Nav.Link>
 
-          </> : <> <Nav.Link as={Link} to="/profile">
-            Profile
+          </> : <> <Nav.Link as={Link} to="/new-article">
+            Add Article
           </Nav.Link>
 
               <Nav.Link as={Link} to='/new-product'> Add New Product </Nav.Link>

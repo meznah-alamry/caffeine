@@ -2,7 +2,7 @@ import React from "react";
 import { Form , Button} from "react-bootstrap";
 import axios from "axios";
 import  {useState}  from 'react';
-import { Route, Redirect , useHistory} from "react-router-dom";
+import { Route, Redirect , useHistory , Link} from "react-router-dom";
 
 
 export default function NewProduct(props) {
@@ -70,6 +70,7 @@ export default function NewProduct(props) {
             <b>State</b>
           </Form.Label>
         <Form.Control size="mm" as="select" name="state" onChange={(e) => onChangeInput(e)}>
+          <option></option>
           <option>New</option>
           <option>Like New</option>
           <option>Used</option>
@@ -77,9 +78,12 @@ export default function NewProduct(props) {
         </Form.Group>
 
         <br/>
-        <Button className="btn-add-product" variant="secondary" size="sm" onClick={(e)=>onsubmitNewProduct(e)}>
+        <Link to="/products" className="btn-add-product" > 
+        <Button variant="secondary" size="sm" onClick={(e)=>onsubmitNewProduct(e)}>
           Add New Product
         </Button>
+        </Link>
+        
       </Form>
     </div>
   );

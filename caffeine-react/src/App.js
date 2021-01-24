@@ -17,7 +17,7 @@ import ShowOneProduct from "./pages/ShowOneProduct";
 import Products from "./pages/Products";
 import HomePage from "./pages/Home";
 import NewProduct from "./pages/NewProduct";
-
+import Cart from './pages/Cart'
 
 // components
 import NavBar from './components/NavBar'
@@ -92,9 +92,15 @@ function App() {
             <Products setSelectProduct={setSelectProduct} />
           </Route>
 
+          <Route exact path="/cart">
+            <Cart  
+            auth={auth} />
+          </Route>
+
           {/* <Footer /> */}
           
         </Router>
+        
       )}
       
     </div>

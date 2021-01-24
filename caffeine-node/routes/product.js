@@ -14,7 +14,7 @@ router.post("/new-product", (req, res) => {
     console.log(req.body);
     const { title ,description , img ,price ,state } = req.body;
 
-    Product.create({ title :title , description:description , img:img ,price :price , state :state}, (err, newP) => {
+    Product.create({ title :title , description:description , img:img ,price: price , state: state}, (err, newP) => {
         console.log("new Product: ", newP);
        
     });

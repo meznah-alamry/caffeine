@@ -1,5 +1,5 @@
 import React from 'react'
-import {useParams} from 'react-router-dom';
+import {useParams , Link} from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from 'axios'
 import { Button, Col, Container, Row } from 'react-bootstrap'
@@ -43,7 +43,10 @@ export default function ShowOneProduct(props) {
                         <h2> {description}</h2>
                         <h2>{price}</h2>
                         <h2>{state}</h2>
-                        <Button onClick={() => addProductToCart()} variant="secondary" size="sm" className="outline-light" > Add to cart </Button>
+                        <Link to="/products">
+                        <Button onClick={() => addProductToCart()} variant="secondary" size="sm" className="outline-light" >
+                       Add to cart </Button>
+                       </Link>
                     </Col>
                 </Row>
 

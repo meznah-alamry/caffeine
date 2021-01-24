@@ -16,9 +16,11 @@ export default function NewArticle(props) {
     const onsubmitNewArticle = (event) => {
         event.preventDefault();
         console.log('article after submit', article)
+        //currentUser._id
+        console.log(props.auth.currentUser._id)
 
         axios
-            .post("http://localhost:5000/api/article/new-article", article)
+            .post("http://localhost:5000/api/article/new-article", { ...article, id: props.auth.currentUser._id })
             .then((res) => {
 
                 history.push("/");
@@ -58,7 +60,7 @@ export default function NewArticle(props) {
                     <br />
                     <Button className="btn-add-product" variant="secondary" size="sm" onClick={(e) => onsubmitNewArticle(e)}>
                         Add to articles
-        </Button>
+                    </Button>
                 </Form>
             </div>
         );

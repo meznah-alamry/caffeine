@@ -1,0 +1,25 @@
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    color:rgb(92, 92, 92)
+
+}
+
+.Articles .art{
+    margin-right: 10px;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.Articles .art img{
+    width: 100%;
+    max-width: 500px;
+    min-height: 250px;
+    max-height: 250px;
+}
+.Articles .art h1{
+     font-size: 1.1vw;
+     margin-top: 10px;
+}
+.Articles .art p{
+    font-size: 0.7vw;
+}

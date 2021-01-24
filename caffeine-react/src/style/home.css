@@ -25,10 +25,11 @@ margin-top: 20px;
     font-size: 1.5vw; 
     margin-left: 10px;
     cursor: pointer;
-
+    color:rgb(92, 92, 92)
  } 
 
 .Home .article-header h1:hover{
+    
  color: rgb(195, 195, 195)
 }
 
@@ -39,10 +40,15 @@ margin-top: 20px;
 }
 
 .Home .art1{
-    margin-right: 10px;
+    margin-right: 15px;
     flex-grow: 1;
     flex-shrink: 1;
 }
+
+/* .Home .art1:last-child{
+    margin-right: 0px;
+} */
+
 .Home .article-section img{
     width: 100%;
     max-width: 500px;
@@ -52,10 +58,16 @@ margin-top: 20px;
 .Home .article-section h1{
      font-size: 1.1vw;
      margin-top: 10px;
+     color: black;
 }
-.Home .article-section p{
+
+.Home .article-section .content{
     font-size: 0.7vw;
+    max-width: 500px;
+    text-align: justify;
+    color:rgb(92, 92, 92);
 }
+
 .Home .art2{
     margin-right: 10px;
     flex-grow: 1;

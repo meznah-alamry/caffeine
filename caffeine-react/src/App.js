@@ -18,11 +18,13 @@ import HomePage from "./pages/Home";
 import NewProduct from "./pages/NewProduct";
 import Forgot from './pages/Forgot';
 import ShowOneArticle from './pages/ShowOneArticle';
+import Articles from './pages/Articles';
 
 // components
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import NewArticle from "./pages/NewArticle";
+
 
 
 
@@ -99,7 +101,11 @@ function App() {
           </Route>
 
           <Route path="/:article_id/article" >
-            <ShowOneArticle selectArtcile={selectArtcile} />
+            <ShowOneArticle selectArtcile={selectArtcile} auth={auth}/>
+          </Route>
+
+          <Route path="/articles" >
+            <Articles setSelectArticle={setSelectArticle}/>
           </Route>
 
           {/* <Footer /> */}

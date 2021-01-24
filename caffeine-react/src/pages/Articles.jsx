@@ -1,33 +1,59 @@
-import React from 'react'
-import { Col, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { useState, useEffect } from "react";
+import { Container, Row, Col, Card, Image } from "react-bootstrap";
+import axios from "axios";
+import { Link } from 'react-router-dom';
+import LinesEllipsis from 'react-lines-ellipsis'
 
-export default function Articles(props) {
+export default function Home(props) {
+  const [articles, setArticles] = useState([])
 
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/article/')
+      .then(res => {
+        setArticles(res.data.msg)
+      })
+  }, [])
+
+
+  const allArticles = articles.map(article => {
+
+    console.log(article)
     return (
-        <>
-            {props.article && (
-                <Row>
-                    <Col md="4" sm="4" className="mt-3">
-                        <div className="">
-                            <img
-                                style={{
-                                    width: '100%',
-                                    maxWidth: '500px',
-                                    minWheight: '250px',
-                                    maxHeight: '250px'
-                                }}
-                                src={props.article.img}
-                                alt=""
-                            />
-                            <Link to={`/${props.article._id}/article`} onClick={() => props.setSelectArticle(props.article)}  >
-                                <h1 style={{ textDecoration: 'none', color: 'black' }}>{props.article.title}</h1>
-                                <p style={{ textDecoration: 'none', color: 'black', textAlign: 'justify' }}>{props.article.content}</p>
-                            </Link>
-                        </div>
-                    </Col>
-                </Row>
-            )}
-        </>
+      <Link to={`/${article._id}/article`} onClick={() => props.setSelectArticle(article)} style={{textDecoration:'none'}}>
+        <div className="art1">
+          <img
+            src={article.img}
+            alt=""
+          />
+          <h1>{article.title}</h1>
+          {/* <p>{article.content}</p> */}
+          <LinesEllipsis className="content"
+            text={article.content}
+            maxLine='3'
+            ellipsis='....  (read more)'
+            trimRight
+          />
+        </div>
+      </Link>
     )
+  })
+
+
+
+  return (
+    <div className="Home">
+      <Container fluid className="container-section-ov">
+
+        <Row>
+          <div className="article-section">
+
+            {allArticles}
+
+
+          </div>
+        </Row>
+      </Container>
+    </div>
+  );
 }

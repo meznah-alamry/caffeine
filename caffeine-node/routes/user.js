@@ -140,16 +140,18 @@ router.put("/:userId/:productId", (req, res) => {
 router.get('/:userId/cart' , (req,res)=>{
   const userId = req.params.userId
 
-  User.findOne({_id: userId}).populate('Products')
-  .then(user =>{
-console.log(user)
-    res.json({ msg: "User Info",user});
+  User.findOne({_id: userId}).populate('products')
+    .then(user=>{
+      
+    res.json({ msg: "User Info", user});
+
+    })
 
   })
 
   
 
-})
+
 
 
 router.post('/:userId/cart/:productId' , (req,res)=>{

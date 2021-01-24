@@ -36,27 +36,31 @@ export default function Login(props) {
   };
 
   return (
+
+    <div className= "cont">
     <form>
+      <div className="form">
                 <h3> Login </h3>
 
-                <div className="form-group">
+                <div >
                     <label>Email address</label>
                     <input  onChange={(e) => onChangeInput(e)} type="email" className="form-control" name="email" placeholder="Enter email" />
                 </div>
 
-                <div className="form-group">
+                <div >
                     <label>Password</label>
                     <input   onChange={(e) => onChangeInput(e)} type="password" name="password" className="form-control" placeholder="Enter password" />
                 </div>
 
             
 
-                <button  onClick={(e) => onSubmit(e)} type="submit" className="btn btn-primary btn-block">Submit</button>
+                <button className="btn" onClick={(e) => onSubmit(e)} type="submit" >Login</button>
                 <p className="forgot-password text-right">
                     Forgot <Link to ="/forgot">password?</Link>
                 </p>
+                </div>
             </form>
 
-   
+            </div>
   );
 }

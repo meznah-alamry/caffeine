@@ -4,49 +4,62 @@ import { useEffect, useState } from "react";
 import { Container, Button, Row  } from 'react-bootstrap'
 import OneCardproduct from '../components/OneCardProduct'
 //cart
-
+let sum = 0 ;
 export default function Cart(props) {
 
     const [alluserProducts, setAluserProducts] = useState([])
+    const [changeuseEffect, setChangeuseEffect] = useState(false)
+
+  
     const { name, email, products, _id } = props.auth.currentUser;
-   // console.log(products)
+
    
     useEffect(() => {
-        console.log(_id)
       axios.get(`http://localhost:5000/api/user/${_id}/cart`)
-        .then(data => {
+        .then(res => {
           
-        //   let filterProducts = data.msg.map(product => )
   
-        //   setAluserProducts(filterProducts)
-
-
-       console.log(data)
+          setAluserProducts(res.data.user.products)
+         
+       
        })
   
-    },  [])
+    },  [changeuseEffect])
   
-    // const deleteProduct = (productId) => {
-    //   let userId = _id
-    //   axios.delete(`http://localhost:5000/api/products/${productId}/${userId}`)
-    //     .then(data => {
-    //       props.setAuth(pre => ({ ...pre, currentUser: { ...pre.currentUser, products: data.msg.products } }))
-    //       console.log(data)
+    const deleteProduct = (productId) => {
+      let userId = _id
+      axios.post(`http://localhost:5000/api/user/${userId}/cart/${productId}`)
+        .then(res => {
+         
+         console.log(res)
+        })
+        setChangeuseEffect(!changeuseEffect)
+    }
   
-    //     })
-    //     setAluserProducts(products)
-  
-    // }
-  
-    // const cartProducts= alluserProducts.map(product => <OneCardproduct deleteProduct={deleteProduct} product={product} delete={true} />)
-    return (<Container>
-        <Row >
-          {/* {cartProducts} */}
+    const cartProducts= alluserProducts.map(product =>{
+             sum += parseFloat(product.price); 
+      return (
 
-          <h1>asim</h1>
-        </Row>
-  
-      </Container>)
+        <>
+        <OneCardproduct deleteProduct={deleteProduct} product={product} delete={true} /> 
+       
+        <div> <hr></hr></div> </>
+      )
+    } )
+    return (
+      
+<div className="Cart">
+
+         <h1>Shopping Cart</h1>
+         <div> <hr></hr></div>
+          {cartProducts}
+
+        
+
+          <p className="total"> Total : {sum}</p>
+</div>
+        
+)
       
     
   

@@ -36,6 +36,8 @@ export default function Forgot(props) {
   };
 
   return (
+    <div className="cont">
+      <div className="form">
     <form>
                 <h3>Reset your password</h3>
 
@@ -50,15 +52,16 @@ export default function Forgot(props) {
                 </div>
 
                 <div className="form-group">
-                    <label>Confirm your password</label>
+                    <label>confirm your password</label>
                     <input   onChange={(e) => onChangeInput(e)} type="password" name="confirmPassword" className="form-control" placeholder="Enter password" />
                 </div>
 
 
-                <button  onClick={(e) => onSubmit(e)} type="submit" className="btn btn-primary btn-block">Submit</button>
-                
+                <Button className="btn" onClick={(e) => onSubmit(e)} type="submit" >Submit</Button>
+               
             </form>
-
+            </div>
+            </div>
    
   );
 }

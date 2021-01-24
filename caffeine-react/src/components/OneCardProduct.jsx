@@ -11,14 +11,28 @@ export default function OneCardProduct(props) {
        
 
 
-                    <div>
-                        <div>  {props.product.img}</div>
-                        <div>  {props.product.title}</div>
-                        <div>  {props.product.price}</div>
+                    <div className="OneCardProduct">
+                   
+
+                       
+                        <div> <Link to={`products/${props.product._id}`}>  <img   src={props.product.img} alt=""   /> </Link> </div>
+                       
+                       
+                        <div> <Link to={`products/${props.product._id}`}> <p className="ex1">{props.product.title}</p></Link> </div>
                         
-                        {props.delete && <Button 
-                    onClick={()=> props.deleteProduct(props.product._id)}
-                    className="btn-danger" >delete </Button> }</div>
+                        <div className="price">  SAR {props.product.price}   </div>
+
+                        <div>
+
+                          {props.delete &&  <Link  onClick={()=> props.deleteProduct(props.product._id)} to="/cart">
+                              Delete
+                              </Link>}
+
+                     </div>
+
+                   
+                    
+                    </div>
                    }
         </>
     )

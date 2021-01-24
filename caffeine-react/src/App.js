@@ -9,15 +9,19 @@ import "./style/footer.css";
 import "./style/home.css";
 import "./style/new-product.css";
 import "./style/products.css";
-import Forgot from './pages/Forgot';
+import "./style/Cart.css";
+import "./style/login.css";
+
 // pages
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Forgot from './pages/Forgot';
 import ShowOneProduct from "./pages/ShowOneProduct";
 import Products from "./pages/Products";
 import HomePage from "./pages/Home";
 import NewProduct from "./pages/NewProduct";
 import Cart from './pages/Cart'
+
 // components
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
@@ -89,18 +93,17 @@ function App() {
 
           <Route exact path="/products">
             <Products setSelectProduct={setSelectProduct} />
-          </Route> 
-
+          </Route>
 
           <Route exact path="/cart">
             <Cart  
             auth={auth} />
           </Route>
 
-
           {/* <Footer /> */}
           
         </Router>
+        
       )}
       
     </div>

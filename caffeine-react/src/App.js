@@ -123,7 +123,7 @@ function App() {
           </Route>
 
           <Route path="/admin" >
-            <Admin />
+            <Admin auth={auth}/>
           </Route>
 
           {/* <Footer /> */}

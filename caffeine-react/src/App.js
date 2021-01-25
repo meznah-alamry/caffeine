@@ -10,25 +10,26 @@ import "./style/home.css";
 import "./style/new-product.css";
 // import "./style/all-products";
 // import './style/show-one-product';
-
+// import "./style/products.css";
+import "./style/Cart.css";
+import "./style/login.css";
 
 // pages
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Forgot from './pages/Forgot';
 import ShowOneProduct from "./pages/ShowOneProduct";
 import Products from "./pages/Products";
 import HomePage from "./pages/Home";
 import NewProduct from "./pages/NewProduct";
 import Cart from './pages/Cart'
 import NewArticle from "./pages/NewArticle";
-import Forgot from './pages/Forgot';
 import ShowOneArticle from './pages/ShowOneArticle';
 import Articles from './pages/Articles';
 
 // components
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
-import NewArticle from "./pages/NewArticle";
 
 
 

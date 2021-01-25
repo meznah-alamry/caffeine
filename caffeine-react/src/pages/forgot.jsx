@@ -36,6 +36,8 @@ export default function Forgot(props) {
   };
 
   return (
+    <div className="cont">
+      <div className="form">
     <form>
                 <h3>Reset your password</h3>
 
@@ -55,10 +57,11 @@ export default function Forgot(props) {
                 </div>
 
 
-                <button  onClick={(e) => onSubmit(e)} type="submit" className="btn btn-primary btn-block">Submit</button>
-                
+                <Button className="btn" onClick={(e) => onSubmit(e)} type="submit" >Submit</Button>
+               
             </form>
-
+            </div>
+            </div>
    
   );
 }

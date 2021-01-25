@@ -77,8 +77,8 @@ export default function NewProduct(props) {
         <Form.Label>
             <b>State</b>
           </Form.Label>
-        <Form.Control size="mm" as="select" name="state" onChange={(e) => onChangeInput(e)} placeholder="http://">
-          <option value={-1}></option>
+        <Form.Control size="mm" as="select" name="state" onChange={(e) => onChangeInput(e)} placeholder="http://" >
+          <option></option>
           <option>New</option>
           <option>Like New</option>
           <option>Used</option>

@@ -39,6 +39,8 @@ export default function Singup(props) {
           The email is already in use. Please change the email
         </Alert>
       )}
+      <div className="cont">
+        <div className="form">
       <form>
                 <h3>Sign Up</h3>
 
@@ -58,10 +60,13 @@ export default function Singup(props) {
                 </div>
 
             
-
-                <button   onClick={(e) => onSubmit(e)}type="submit" className="btn btn-primary btn-block">Submit</button>
+               
+                <button className="btn" variant="secondary" size="sm"  onClick={(e) => onSubmit(e)}type="submit" >Sign up</button>
                 
             </form>
+
+            </div>
+            </div>
     </>
   );
 }

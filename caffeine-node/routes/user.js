@@ -169,7 +169,7 @@ router.post('/:userId/cart/:productId' , (req,res)=>{
   .then(user => {
     console.log(user)
       let userProducts = user.products.filter(product =>{
-        return !(product == productId)
+        return !(product.oneProduct.id == productId)
       })
       console.log(user.products.length)
       User.findByIdAndUpdate(userId ,{products :userProducts})

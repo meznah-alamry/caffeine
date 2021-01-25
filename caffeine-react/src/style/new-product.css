@@ -21,3 +21,7 @@
        margin: 5px auto auto auto;
        
  }
+
+ .NewProduct .qty-drop-down{
+     max-width: 50px;
+ }

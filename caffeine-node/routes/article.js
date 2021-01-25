@@ -18,6 +18,7 @@ router.get("/", (req, res) => {
 
 
     Article.create({ title :title , content:content , img:img, user: user}, (err, newArticle) => {
+
         console.log("new article: ", newArticle);
        
     });

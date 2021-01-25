@@ -2,7 +2,7 @@ import React from "react";
 import { Form , Button} from "react-bootstrap";
 import axios from "axios";
 import  {useState}  from 'react';
-import { Route, Redirect , useHistory} from "react-router-dom";
+import { Route, Redirect , useHistory , Link} from "react-router-dom";
 
 
 export default function NewProduct(props) {
@@ -32,6 +32,14 @@ export default function NewProduct(props) {
 
     }
 
+    const numbersOfQty = 30;
+
+    const qtyNumberDropDown = [...Array(numbersOfQty)].map((e,i)=>{
+      return (
+      <option>{i+1}</option>
+      )
+
+    })
     if (props.auth.isLoggedIn) {
 
   return (
@@ -69,17 +77,31 @@ export default function NewProduct(props) {
         <Form.Label>
             <b>State</b>
           </Form.Label>
-        <Form.Control size="mm" as="select" name="state" onChange={(e) => onChangeInput(e)}>
+        <Form.Control size="mm" as="select" name="state" onChange={(e) => onChangeInput(e)} placeholder="http://">
+          <option value={-1}></option>
           <option>New</option>
           <option>Like New</option>
           <option>Used</option>
         </Form.Control>
         </Form.Group>
+        
+        <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>
+            <b>Quantity</b>
+          </Form.Label>
+        <Form.Control  size="sm" as="select" name="qty" onChange={(e) => onChangeInput(e)} className="qty-drop-down">
+          <option ></option>
+          {qtyNumberDropDown}
+        </Form.Control>
+        </Form.Group>
 
         <br/>
-        <Button className="btn-add-product" variant="secondary" size="sm" onClick={(e)=>onsubmitNewProduct(e)}>
+        <Link to="/products" className="btn-add-product" > 
+        <Button variant="secondary" size="sm" onClick={(e)=>onsubmitNewProduct(e)}>
           Add New Product
         </Button>
+        </Link>
+        
       </Form>
     </div>
   );

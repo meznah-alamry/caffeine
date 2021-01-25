@@ -8,7 +8,10 @@ import "./style/nav-bar.css";
 import "./style/footer.css";
 import "./style/home.css";
 import "./style/new-product.css";
-import "./style/products.css";
+// import "./style/all-products";
+// import './style/show-one-product';
+
+
 // pages
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -16,6 +19,8 @@ import ShowOneProduct from "./pages/ShowOneProduct";
 import Products from "./pages/Products";
 import HomePage from "./pages/Home";
 import NewProduct from "./pages/NewProduct";
+import Cart from './pages/Cart'
+import NewArticle from "./pages/NewArticle";
 import Forgot from './pages/Forgot';
 import ShowOneArticle from './pages/ShowOneArticle';
 import Articles from './pages/Articles';
@@ -88,13 +93,20 @@ function App() {
           </Route>
 
           <Route path="/products/:id">
-            <ShowOneProduct selectProduct={selectProduct} />
+            <ShowOneProduct selectProduct={selectProduct} auth={auth} />
+
           </Route>
 
           <Route exact path="/products">
             <Products setSelectProduct={setSelectProduct} />
           </Route>
 
+          <Route exact path="/cart">
+            <Cart  
+            auth={auth} />
+          </Route>
+
+          
           <Route path="/new-article">
             <NewArticle setAuth={setAuth}
               auth={auth}/>
@@ -111,6 +123,7 @@ function App() {
           {/* <Footer /> */}
 
         </Router>
+        
       )}
 
     </div>

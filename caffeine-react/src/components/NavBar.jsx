@@ -32,7 +32,9 @@ export default function NavBar(props) {
 
               <Nav.Link as={Link} to='/new-product'> Add New Product </Nav.Link>
 
-              <ShoppingCartIcon style={{ marginTop: "6px", marginRight: "15px", fontSize: "25px", color: "#7d8179" }} />
+              <Nav.Link as={Link} to='/cart'>  <ShoppingCartIcon style={{ marginTop: "6px", marginRight: "15px", fontSize: "25px", color: "#7d8179" }} /> </Nav.Link>
+
+             
 
               <Button variant="dark"
                 onClick={() => {

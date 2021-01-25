@@ -13,6 +13,8 @@ import "./style/new-product.css";
 // import "./style/products.css";
 import "./style/Cart.css";
 import "./style/login.css";
+import "./style/admin.css";
+import "./style/articles.css"
 
 // pages
 import Login from "./pages/Login";

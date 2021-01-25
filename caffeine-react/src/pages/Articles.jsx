@@ -21,7 +21,7 @@ export default function Home(props) {
     console.log(article)
     return (
       <Link to={`/${article._id}/article`} onClick={() => props.setSelectArticle(article)} style={{textDecoration:'none'}}>
-        <div className="art2">
+        <div className="article-content">
           <img
             src={article.img}
             alt=""
@@ -42,11 +42,11 @@ export default function Home(props) {
 
 
   return (
-    <div className="Home">
-      <Container fluid className="container-section-ov">
+    <div className="Articles">
+      <Container fluid className="article-container-section">
 
         <Row>
-          <div className="article-section article-page">
+          <div className="article-page">
 
             {allArticles}
 

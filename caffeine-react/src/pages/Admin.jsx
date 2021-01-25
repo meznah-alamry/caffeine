@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+import { Link } from 'react-router-dom';
 
 export default function Admin(props) {
 
@@ -74,16 +75,15 @@ export default function Admin(props) {
 
         return (
             <>
-                <div style={{ border: '1px solid gray', margin: '10px', padding: '10px 10%' }}>
+                <div className='content-container'>
                     <img
                         src={article.img}
                         alt=""
-                        style={{ width: '50px', height: '50px', float: 'left', marginRight: '10px' }}
                     />
-                    <h5 style={{ marginTop: '10px', float: 'left' }}>{article.title}</h5>
+                    <h5 className="container-title">{article.title}</h5>
                     {/* <p>{article.content}</p> */}
 
-                    <p style={{ color: 'red', marginTop: '10px', textAlign: 'end', cursor: 'pointer' }} onClick={() => deleteArticle(article)}>X</p>
+                    <p className="admin-delete-btn" onClick={() => deleteArticle(article)}>X</p>
                 </div>
             </>
         )
@@ -95,15 +95,14 @@ export default function Admin(props) {
 
         return (
             <>
-                <div style={{ border: '1px solid gray', margin: '10px', padding: '10px 10%' }}>
+                <div className='content-container'>
                     <img
                         src={product.img}
                         alt=""
-                        style={{ width: '50px', height: '50px', float: 'left', marginRight: '10px' }}
                     />
-                    <h5 style={{ marginTop: '10px', float: 'left' }}>{product.title}</h5>
+                    <h5 className="container-title">{product.title}</h5>
 
-                    <p style={{ color: 'red', marginTop: '10px', textAlign: 'end', cursor: 'pointer' }} onClick={() => deleteProduct(product)}>X</p>
+                    <p className="admin-delete-btn" onClick={() => deleteProduct(product)}>X</p>
                 </div>
             </>
         )
@@ -115,13 +114,12 @@ export default function Admin(props) {
 
         return (
             <>
-                <div style={{ border: '1px solid gray', margin: '10px', padding: '10px 10%' }}>
+                <div className='content-container'>
                     <img
                         src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'
                         alt=""
-                        style={{ width: '50px', height: '50px', float: 'left', marginRight: '10px' }}
                     />
-                    <h5 style={{ marginTop: '10px', float: 'left', marginRight: '10px' }}>Name: {user.name}, Email: {user.email}</h5>
+                    <h5 className="container-title">Name: {user.name}, Email: {user.email}</h5>
 
                     {/* <p style={{ marginTop: '10px', float: 'left', marginRight:'10px' }}>Admin: </p>
                     
@@ -135,7 +133,7 @@ export default function Admin(props) {
                         }}
                     /> */}
 
-                    <p style={{ color: 'red', marginTop: '10px', textAlign: 'end', cursor: 'pointer' }} onClick={() => deleteUser(user)}>X</p>
+                    <p className="admin-delete-btn" onClick={() => deleteUser(user)}>X</p>
                 </div>
             </>
         )
@@ -148,7 +146,7 @@ export default function Admin(props) {
         return (
             <>
                 <div class="alert alert-danger" role="alert">
-                    <strong>Oh !!!</strong> <a href="#" class="alert-link">You have to login first</a> and try submitting again.
+                    <strong>Oh !!!</strong> <Link to="/login" class="alert-link">You have to login first</Link> and try submitting again.
                 </div>
             </>
         )
@@ -156,28 +154,28 @@ export default function Admin(props) {
         return (
             <>
                 <div class="alert alert-warning" role="alert">
-                    <strong>Oh !!!</strong> <a href="#" class="alert-link">You dont have permission</a>  to access this page.
+                    <strong>Oh !!!</strong> <Link to="/" class="alert-link">You dont have permission</Link>  to access this page.
                 </div>
             </>
         )
     } else {
         return (
-            <div style={{ width: '70%', margin: '10px auto' }}>
+            <div className="dashboard-container ">
 
                 <h1>Articles</h1>
-                <div className='articles' style={{ height: '20vh', overflow: 'scroll' }}>
+                <div className='admin-container'>
 
                     {allArticles}
 
                 </div> <br />
 
                 <h1>Products</h1>
-                <div className='products' style={{ height: '20vh', overflow: 'scroll' }}>
+                <div className='admin-container'>
                     {allProducts}
                 </div> <br />
 
                 <h1>Users</h1>
-                <div className='users' style={{ height: '20vh', overflow: 'scroll' }}>
+                <div className='admin-container'>
                     {allUsers}
                 </div>
             </div>

@@ -8,8 +8,10 @@ import "./style/nav-bar.css";
 import "./style/footer.css";
 import "./style/home.css";
 import "./style/new-product.css";
-import "./style/products.css";
-import Forgot from './pages/Forgot';
+// import "./style/all-products";
+// import './style/show-one-product';
+
+
 // pages
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -18,6 +20,8 @@ import Products from "./pages/Products";
 import HomePage from "./pages/Home";
 import NewProduct from "./pages/NewProduct";
 import Cart from './pages/Cart'
+import NewArticle from "./pages/NewArticle";
+import Forgot from './pages/Forgot';
 
 // components
 import NavBar from './components/NavBar'
@@ -95,6 +99,12 @@ function App() {
           <Route exact path="/cart">
             <Cart  
             auth={auth} />
+          </Route>
+
+          
+          <Route path="/new-article">
+            <NewArticle setAuth={setAuth}
+              auth={auth}/>
           </Route>
 
           {/* <Footer /> */}

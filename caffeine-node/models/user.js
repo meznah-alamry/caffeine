@@ -14,7 +14,14 @@ const userSchema = new mongoose.Schema({
         type :String , 
         required :true
     },
-    products: [{type: mongoose.Schema.Types.ObjectId, ref: 'product'}]
+    products:[
+    { oneProduct: {
+        id: {type: mongoose.Schema.Types.ObjectId, ref: 'product'},
+        qty: String
+        
+    }
+}
+]
 
 } , {timestamps :true})
 

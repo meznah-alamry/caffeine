@@ -32,6 +32,14 @@ export default function NewProduct(props) {
 
     }
 
+    const numbersOfQty = 30;
+
+    const qtyNumberDropDown = [...Array(numbersOfQty)].map((e,i)=>{
+      return (
+      <option>{i+1}</option>
+      )
+
+    })
     if (props.auth.isLoggedIn) {
 
   return (
@@ -69,11 +77,21 @@ export default function NewProduct(props) {
         <Form.Label>
             <b>State</b>
           </Form.Label>
-        <Form.Control size="mm" as="select" name="state" onChange={(e) => onChangeInput(e)}>
-          <option></option>
+        <Form.Control size="mm" as="select" name="state" onChange={(e) => onChangeInput(e)} placeholder="http://">
+          <option value={-1}></option>
           <option>New</option>
           <option>Like New</option>
           <option>Used</option>
+        </Form.Control>
+        </Form.Group>
+        
+        <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>
+            <b>Quantity</b>
+          </Form.Label>
+        <Form.Control  size="sm" as="select" name="qty" onChange={(e) => onChangeInput(e)} className="qty-drop-down">
+          <option ></option>
+          {qtyNumberDropDown}
         </Form.Control>
         </Form.Group>
 

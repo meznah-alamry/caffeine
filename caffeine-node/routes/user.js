@@ -60,7 +60,7 @@ router.post("/login", async (req, res) => {
       user.password = undefined;
       let payload = { user };
       let token = jwt.sign(payload, process.env.SECRET_KEY, {
-        expiresIn: 1000 * 60 * 60,
+        expiresIn:   60 * 60 * 60 * 1000 * 60 * 60,
       }); // to the user info
       res.json({ msg: "User login ", token });
     }
@@ -116,14 +116,22 @@ router.post('/forgot' , (req,res)=>{
 router.put("/:userId/:productId", (req, res) => {
   const productId = req.params.productId
   const userId = req.params.userId
-
+  const productQty = req.body.qty
+ 
   Product.findOne({_id: productId}, (err, product)=>{
+    let addProduct = product
+    addProduct.qty = productQty
     const updateUser = {
       $push: {
-        products: product
+        products: { oneProduct: {
+          id: product,
+          qty: productQty
+          
     }
-    
   }
+    }
+  }
+  console.log()
   User.findByIdAndUpdate(userId, updateUser, (err, newUser) => {
     
 
@@ -139,8 +147,8 @@ router.put("/:userId/:productId", (req, res) => {
 
 router.get('/:userId/cart' , (req,res)=>{
   const userId = req.params.userId
-
-  User.findOne({_id: userId}).populate('products')
+  
+  User.findOne({_id: userId}).populate('products.oneProduct.id')
     .then(user=>{
       
     res.json({ msg: "User Info", user});

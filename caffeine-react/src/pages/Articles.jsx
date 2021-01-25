@@ -21,7 +21,7 @@ export default function Home(props) {
     console.log(article)
     return (
       <Link to={`/${article._id}/article`} onClick={() => props.setSelectArticle(article)} style={{textDecoration:'none'}}>
-        <div className="art1">
+        <div className="art2">
           <img
             src={article.img}
             alt=""
@@ -31,7 +31,7 @@ export default function Home(props) {
           <LinesEllipsis className="content"
             text={article.content}
             maxLine='3'
-            ellipsis='....  (read more)'
+            ellipsis='....  (Read More)'
             trimRight
           />
         </div>
@@ -46,7 +46,7 @@ export default function Home(props) {
       <Container fluid className="container-section-ov">
 
         <Row>
-          <div className="article-section">
+          <div className="article-section article-page">
 
             {allArticles}
 

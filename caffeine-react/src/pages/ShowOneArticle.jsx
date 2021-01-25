@@ -33,7 +33,7 @@ export default function ShowOneArticle(props) {
         axios.delete(`http://localhost:5000/api/article/${articleId}`)
           .then(data => {
             
-            history.push('/')
+            history.push('/articles')
           })
     
           

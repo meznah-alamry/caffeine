@@ -26,6 +26,7 @@ import Cart from './pages/Cart'
 import NewArticle from "./pages/NewArticle";
 import ShowOneArticle from './pages/ShowOneArticle';
 import Articles from './pages/Articles';
+import Admin from "./pages/Admin";
 
 // components
 import NavBar from './components/NavBar'
@@ -119,6 +120,10 @@ function App() {
 
           <Route path="/articles" >
             <Articles setSelectArticle={setSelectArticle}/>
+          </Route>
+
+          <Route path="/admin" >
+            <Admin />
           </Route>
 
           {/* <Footer /> */}

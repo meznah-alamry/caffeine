@@ -39,6 +39,11 @@ margin-top: 20px;
     display: flex;
 }
 
+.Home .article-page{
+    flex-wrap: wrap;
+   
+}
+
 .Home .art1{
     margin-right: 15px;
     flex-grow: 1;
@@ -69,9 +74,11 @@ margin-top: 20px;
 }
 
 .Home .art2{
-    margin-right: 10px;
-    flex-grow: 1;
-    flex-shrink: 1;
+    width: 100%;
+    max-width: 500px;
+    margin-right: 100px;
+    margin-bottom: 40px;
+    
 }
 .Home .art3{
     flex-shrink: 1;

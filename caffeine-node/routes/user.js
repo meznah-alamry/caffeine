@@ -151,7 +151,7 @@ router.get('/:userId/cart' , (req,res)=>{
   User.findOne({_id: userId}).populate('products.oneProduct.id')
     .then(user=>{
       
-    res.json({ msg: "User Info", user});
+     res.json({ msg: "User Info", user});
 
     })
 
@@ -179,4 +179,18 @@ router.delete('/:userId/cart/:productId' , (req,res)=>{
   })
 
 })
+
+router.delete('/cart/delete-order/:userId' , (req,res)=>{
+  const userId = req.params.userId
+  
+  User.findOneAndUpdate({_id: userId},{$set: { products: [] }})
+  .then(user =>{
+
+          res.json({msg : "Your Orders Has Been Deleted!"})
+
+  })
+
+
+})
+
 module.exports = router;

@@ -23,7 +23,7 @@ export default function NewArticle(props) {
             .post("http://localhost:5000/api/article/new-article", { ...article, id: props.auth.currentUser._id })
             .then((res) => {
 
-                history.push("/");
+                history.push("/articles");
 
 
             })

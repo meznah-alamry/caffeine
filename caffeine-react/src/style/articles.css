@@ -1,25 +1,38 @@
-body{
-    font-family: Georgia, 'Times New Roman', Times, serif; 
-    color:rgb(92, 92, 92)
-
+.Articles .article-container-section {
+    width: 80%;
+    padding-bottom: 50px;
+    border-left: 1px solid white;
+    margin: 0 auto;
 }
 
-.Articles .art{
-    margin-right: 10px;
-    flex-grow: 1;
-    flex-shrink: 1;
-}
-
-.Articles .art img{
+.Articles .article-page{
     width: 100%;
-    max-width: 500px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Articles .article-content{
+    width: 100%;
+    max-width: 400px;
+    margin-right: 80px;
+    margin-bottom: 40px;
+}
+
+.Articles .article-content img{
+    width: 100%;
+    max-width: 400px;
     min-height: 250px;
     max-height: 250px;
 }
-.Articles .art h1{
+.Articles .article-content h1{
      font-size: 1.1vw;
      margin-top: 10px;
 }
-.Articles .art p{
+
+.Articles .article-content .content{
     font-size: 0.7vw;
+    max-width: 400px;
+    text-align: justify;
+    color:rgb(92, 92, 92);
 }

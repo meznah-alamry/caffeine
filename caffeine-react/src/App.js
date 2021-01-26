@@ -8,11 +8,13 @@ import "./style/nav-bar.css";
 import "./style/footer.css";
 import "./style/home.css";
 import "./style/new-product.css";
-// import "./style/all-products";
-// import './style/show-one-product';
-// import "./style/products.css";
+import "./style/all-products.css";
+import './style/show-one-product.css';
+import "./style/all-products.css";
 import "./style/Cart.css";
 import "./style/login.css";
+import "./style/admin.css";
+import "./style/articles.css"
 
 // pages
 import Login from "./pages/Login";
@@ -26,6 +28,7 @@ import Cart from './pages/Cart'
 import NewArticle from "./pages/NewArticle";
 import ShowOneArticle from './pages/ShowOneArticle';
 import Articles from './pages/Articles';
+import Admin from "./pages/Admin";
 
 // components
 import NavBar from './components/NavBar'
@@ -43,6 +46,12 @@ function App() {
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
   const [selectProduct, setSelectProduct] = useState({});
   const [selectArtcile, setSelectArticle] = useState({});
+  const [search, setSearch] = useState("");
+
+
+  const ToSetSearch = (text)=>{ setSearch(text)}
+   console.log("search in app"  + search);
+
 
   const userLogin = () => {
     if (localStorage.jwtToken) {
@@ -64,7 +73,7 @@ function App() {
 
       {dataLoading && (
         <Router>
-          <NavBar isLoggedIn={auth.isLoggedIn} loginCallback={userLogin} />
+          <NavBar isLoggedIn={auth.isLoggedIn} loginCallback={userLogin} ToSetSearch={ToSetSearch} />
           <Route exact path="/">
             <HomePage setSelectArticle={setSelectArticle}/>
           </Route>
@@ -99,7 +108,8 @@ function App() {
           </Route>
 
           <Route exact path="/products">
-            <Products setSelectProduct={setSelectProduct} />
+           
+            <Products setSelectProduct={setSelectProduct} search={search}/>
           </Route>
 
           <Route exact path="/cart">
@@ -119,6 +129,10 @@ function App() {
 
           <Route path="/articles" >
             <Articles setSelectArticle={setSelectArticle}/>
+          </Route>
+
+          <Route path="/admin" >
+            <Admin auth={auth}/>
           </Route>
 
           {/* <Footer /> */}

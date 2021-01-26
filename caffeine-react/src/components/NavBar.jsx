@@ -2,8 +2,13 @@ import React from 'react'
 import { Navbar, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { useEffect, useState } from "react";
 
 export default function NavBar(props) {
+  const [searchTerm, setSearchTerm] = useState("");
+
+ 
+
   return (
     <div className="NavBar">
       <Navbar className="navbar" variant="dark">
@@ -14,6 +19,9 @@ export default function NavBar(props) {
           <Nav.Link as={Link} to="/">Home</Nav.Link>
           <Nav.Link as={Link} to="/products">Products</Nav.Link>
           <Nav.Link as={Link} to="/articles">Articles</Nav.Link>
+         
+          <input type="text" name="search" placeholder="Search"  onChange={event =>{props.ToSetSearch(event.target.value)
+          }}></input>
         </Nav>
 
         <Nav style={{ float: "right" }}>

@@ -61,11 +61,12 @@ export default function NewArticle(props) {
                     <ErrorMessage name="title" render={(msg) =>  <Alert variant={"danger"}>
                     {msg}
                   </Alert>} />
-                    <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>
+                                       <Form.Label>
                             <b>Article</b>
-                        </Form.Label>
-                        <Form.Control as={Field}  rows={10} name="content" />
+                        </Form.Label> 
+                    <Form.Group controlId="exampleForm.ControlTextarea1">
+  
+                        <Field as="textarea" cols={70} rows={10} name="content" />
                     </Form.Group>
                     <ErrorMessage name="content" render={(msg) =>  <Alert variant={"danger"}>
                     {msg}

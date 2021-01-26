@@ -4,7 +4,6 @@ import { Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { Input } from "@material-ui/core";
 
 const validationSchema = Yup.object({
   email: Yup.string().required(" Enter your email "),
@@ -43,7 +42,7 @@ export default function Login(props) {
           setLogin(false);
           setTimeout(() => {
             setLogin(true);
-          }, 3000);
+          }, 5000);
 
         }
       });

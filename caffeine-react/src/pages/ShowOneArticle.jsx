@@ -25,7 +25,7 @@ export default function ShowOneArticle(props) {
                 })
         }
 
-    }, [])
+    }, )
 
  
     const deleteArticle = (articleId) => {

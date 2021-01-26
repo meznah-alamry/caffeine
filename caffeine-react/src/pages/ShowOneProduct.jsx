@@ -51,14 +51,17 @@ export default function ShowOneProduct(props) {
           </Col>
           <Col md="6">
             <h1>{title}</h1>
-            <h2> {description}</h2>
+            <p> {description}</p>
             <h3>{price}</h3>
             {qty ? (
               <h5 style={{ color: "green" }}>In Stock</h5>
-            ) : (
+              ) : (
               <h5 style={{ color: "red" }}>Out of Stock</h5>
             )}
-            <h6>{state}</h6>
+             {qty ? (
+               <h6>{state}</h6>        
+             ) : (<></>)
+              }
             <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>
                 <b>Quantity</b>

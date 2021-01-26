@@ -27,6 +27,9 @@ export default function OneCardProduct(props) {
                         
                         <div className="price">  SAR {product.id.price}   </div>
 
+
+                        <div className="price">  QTY {product.id.qty}   </div>
+
                         <div>
 
                           {props.delete &&  <Link  onClick={()=> props.deleteProduct(product.id._id)} to="/cart">

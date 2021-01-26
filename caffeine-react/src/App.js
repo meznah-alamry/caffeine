@@ -8,9 +8,9 @@ import "./style/nav-bar.css";
 import "./style/footer.css";
 import "./style/home.css";
 import "./style/new-product.css";
-// import "./style/all-products";
-// import './style/show-one-product';
-// import "./style/products.css";
+import "./style/all-products.css";
+import './style/show-one-product.css';
+import "./style/all-products.css";
 import "./style/Cart.css";
 import "./style/login.css";
 

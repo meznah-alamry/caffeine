@@ -16,6 +16,7 @@ router.post("/new-product", (req, res) => {
 
     Product.create({ title :title , description:description , img:img ,price: price , state: state, qty:qty}, (err, newP) => {
         console.log("new Product: ", newP);
+        res.json({msg: "add product", newP})
        
     });
 });

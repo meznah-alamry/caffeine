@@ -1,24 +1,33 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-import { Form, Button, Col, Row } from "react-bootstrap";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { Input } from "@material-ui/core";
+
+const validationSchema = Yup.object({
+  email: Yup.string().required(" Enter your email "),
+  password: Yup.string().required(" Enter password "),
+})
 
 export default function Login(props) {
   const history = useHistory();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
-  const onChangeInput = (event) => {
-    const { name, value } = event.target;
-    setCredentials({
-      ...credentials,
-      [name]: value,
-    });
-  };
+  const [login, setLogin] = useState(true); // to show alert
+  // const onChangeInput = (event) => {
+  //   const { name, value } = event.target;
+  //   setCredentials({
+  //     ...credentials,
+  //     [name]: value,
+  //   });
+  // };
 
-  const onSubmit = (event) => {
-    event.preventDefault();
+  const onSubmit = (values) => {
+    // event.preventDefault();
     axios
-      .post("http://localhost:5000/api/user/login", credentials)
+      .post("http://localhost:5000/api/user/login", values)
       .then((res) => {
         console.log("Express backend /login response", res);
 
@@ -31,36 +40,57 @@ export default function Login(props) {
           history.push("/");
         } else {
           console.log("Login error: ", msg);
+          setLogin(false);
+          setTimeout(() => {
+            setLogin(true);
+          }, 3000);
+
         }
       });
   };
 
   return (
+    <>
+    {!login && (
+      <Alert variant={"danger"}>
+        Your email or password is wrong 
+      </Alert>
+    )}
+    <div className="cont">
 
-    <div className= "cont">
-    <form>
       <div className="form">
-                <h3> Login </h3>
-
-                <div >
-                    <label>Email address</label>
-                    <input  onChange={(e) => onChangeInput(e)} type="email" className="form-control" name="email" placeholder="Enter email" />
-                </div>
-
-                <div >
-                    <label>Password</label>
-                    <input   onChange={(e) => onChangeInput(e)} type="password" name="password" className="form-control" placeholder="Enter password" />
-                </div>
-
-            
-
-                <button className="btn" onClick={(e) => onSubmit(e)} type="submit" >Login</button>
-                <p className="forgot-password text-right">
-                    Forgot <Link to ="/forgot">password?</Link>
-                </p>
-                </div>
-            </form>
-
+        <h3> Login </h3>
+        <Formik
+          initialValues={credentials}
+          validationSchema={validationSchema}
+          onSubmit={values => onSubmit(values)}
+        >
+          <Form>
+            <div >
+              <label>Email address</label>
+              <Field type="email" className="form-control" name="email" placeholder="Enter email" />
             </div>
+            <ErrorMessage name="email" render={(msg) => <Alert variant={"danger"}>
+              {msg}
+            </Alert>} />
+            <div >
+              <label>Password</label>
+              <Field type="password" name="password" className="form-control" placeholder="Enter password" />
+            </div>
+            <ErrorMessage name="password" render={(msg) => <Alert variant={"danger"}>
+              {msg}
+            </Alert>} />
+
+            <button className="btn" type="submit" >Login</button>
+          </Form>
+        </Formik>
+        <p className="forgot-password text-right">
+          Forgot <Link to="/forgot">password?</Link>
+        </p>
+      </div>
+
+
+    </div>
+    </>
   );
 }

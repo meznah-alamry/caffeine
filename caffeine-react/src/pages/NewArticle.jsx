@@ -1,26 +1,35 @@
 import React from 'react';
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import axios from "axios";
 import { useState } from 'react';
 import { Route, Redirect, useHistory } from "react-router-dom";
+import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
+const validationSchema = Yup.object({
+    title: Yup.string().required(" Title is required "),
+    content: Yup.string().required(" Aticle content is required "),
+    img: Yup.string().required(" Image for article is required "),
+  })
+  
+  
 export default function NewArticle(props) {
-    const [article, setArticle] = useState({});
+    const [article, setArticle] = useState({title: "", content:"", img:""});
     const history = useHistory();
 
-    const onChangeInput = ({ target: { name, value } }) => {
-        setArticle({ ...article, [name]: value });
+    // const onChangeInput = ({ target: { name, value } }) => {
+    //     setArticle({ ...article, [name]: value });
 
-    }
+    // }
 
-    const onsubmitNewArticle = (event) => {
-        event.preventDefault();
-        console.log('article after submit', article)
-        //currentUser._id
-        console.log(props.auth.currentUser._id)
+    const onSubmit = (values) => {
+        // values.preventDefault();
+        // console.log('article after submit', article)
+        // //currentUser._id
+        // console.log(props.auth.currentUser._id)
 
         axios
-            .post("http://localhost:5000/api/article/new-article", { ...article, id: props.auth.currentUser._id })
+            .post("http://localhost:5000/api/article/new-article", { ...values, id: props.auth.currentUser._id })
             .then((res) => {
 
                 history.push("/articles");
@@ -35,33 +44,47 @@ export default function NewArticle(props) {
 
         return (
             <div className="NewProduct">
-                <Form className="form">
+
+                <Formik
+                initialValues = {article}
+                validationSchema={validationSchema}
+                onSubmit = {values => onSubmit(values) }
+                >
+
+                <Form as={FormikForm} className="form">
                     <Form.Group controlId="exampleForm.ControlInput1">
                         <Form.Label>
                             <b>Article Title</b>
                         </Form.Label>
-                        <Form.Control type="text" placeholder="Type the title of article" name="title" onChange={(e) => onChangeInput(e)} />
+                        <Form.Control  as={Field} type="text" placeholder="Type the title of article" name="title" />
                     </Form.Group>
-
+                    <ErrorMessage name="title" render={(msg) =>  <Alert variant={"danger"}>
+                    {msg}
+                  </Alert>} />
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                         <Form.Label>
                             <b>Article</b>
                         </Form.Label>
-                        <Form.Control as="textarea" rows={10} name="content" onChange={(e) => onChangeInput(e)} />
+                        <Form.Control as={Field}  rows={10} name="content" />
                     </Form.Group>
-
+                    <ErrorMessage name="content" render={(msg) =>  <Alert variant={"danger"}>
+                    {msg}
+                  </Alert>} />
                     <Form.Group controlId="exampleForm.ControlInput1">
                         <Form.Label>
                             <b>Image</b>
                         </Form.Label>
-                        <Form.Control type="text" placeholder="http://" name="img" onChange={(e) => onChangeInput(e)} />
+                        <Form.Control as={Field} type="text" placeholder="http://" name="img" />
                     </Form.Group>
-
+                    <ErrorMessage name="img" render={(msg) =>  <Alert variant={"danger"}>
+                    {msg}
+                  </Alert>} />
                     <br />
-                    <Button className="btn-add-product" variant="secondary" size="sm" onClick={(e) => onsubmitNewArticle(e)}>
+                    <Button className="btn-add-product" type="submit" variant="secondary" size="sm" >
                         Add to articles
                     </Button>
                 </Form>
+                </Formik>
             </div>
         );
     } else {

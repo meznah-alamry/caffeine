@@ -8,7 +8,7 @@ let sum = 0
 export default function Cart(props) {
     
     const [alluserProducts, setAluserProducts] = useState([])
-    const [changeuseEffect, setChangeuseEffect] = useState(false)
+    const [Delete, setDelete] = useState([false])
 
   
     const { name, email, products, _id } = props.auth.currentUser;
@@ -24,39 +24,65 @@ export default function Cart(props) {
        
        })
   
-    },  [changeuseEffect])
+    }, [Delete] )
   
     const deleteProduct = (productId) => {
       let userId = _id
-      axios.post(`http://localhost:5000/api/user/${userId}/cart/${productId}`)
+      axios.delete(`http://localhost:5000/api/user/${userId}/cart/${productId}`)
         .then(res => {
          
          console.log('cart page',res)
+         setDelete(!(Delete))
         })
-        setChangeuseEffect(!changeuseEffect)
+
+        setAluserProducts(alluserProducts)
+       
     }
-  
+    const uniqueProducts = []
+
+    alluserProducts.forEach(product=> {
+      if(!uniqueProducts.includes(product)) uniqueProducts.push(product)
+    })
+
+    // const sum = (product) => {
+    //   let sum = 0;
+    //   alluserProducts.forEach(product=>{
+    //     if(uniqueProducts.includes(product)) sum++
+    //   })
+    //   return sum
+    // }
+
+
+    const Total = (product) => {
+      let total = 0;
+      alluserProducts.forEach(product=>{
+       total = total + parseInt(product.oneProduct.id.price);
+
+      console.log("product inside function" + product.oneProduct.id.price)
+      })
+      return total
+    }
+
+
+
     const cartProducts= alluserProducts.map(product =>{
-             sum += parseFloat(product.price); 
+           
       return (
 
         <>
         <OneCardproduct deleteProduct={deleteProduct} product={product} delete={true} /> 
-       
+        {/* <p className="total"> Qty :{sum()} </p> */}
         <div> <hr></hr></div> </>
       )
     } )
     return (
       
 <div className="Cart">
-
          <h1>Shopping Cart</h1>
          <div> <hr></hr></div>
           {cartProducts}
-
         
-
-          <p className="total"> Total : {sum}</p>
+          <p className="total"> Total :{Total()} </p>
 </div>
         
 )

@@ -18,16 +18,10 @@ const productSchema = new mongoose.Schema({
         type :String , 
         required :true
     },
-    qty: {
-        type :String , 
-        required :true
-    },
     state : {
         type :String , 
         required :true
-    },
-
-
+    }
 } , {timestamps :true})
 
 

@@ -162,7 +162,7 @@ router.get('/:userId/cart' , (req,res)=>{
 
 
 
-router.post('/:userId/cart/:productId' , (req,res)=>{
+router.delete('/:userId/cart/:productId' , (req,res)=>{
   const userId = req.params.userId
   const productId = req.params.productId
   User.findOne({_id: userId})

@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema({
         type :String , 
         required :true
     },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
     products:[
     { oneProduct: {
         id: {type: mongoose.Schema.Types.ObjectId, ref: 'product'},
@@ -26,5 +30,5 @@ const userSchema = new mongoose.Schema({
 } , {timestamps :true})
 
 
-const User = mongoose.model('User' , userSchema)
+const User = mongoose.model('user' , userSchema)
 module.exports = User

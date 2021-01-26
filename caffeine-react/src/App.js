@@ -13,6 +13,8 @@ import './style/show-one-product.css';
 import "./style/all-products.css";
 import "./style/Cart.css";
 import "./style/login.css";
+import "./style/admin.css";
+import "./style/articles.css"
 
 // pages
 import Login from "./pages/Login";
@@ -26,6 +28,7 @@ import Cart from './pages/Cart'
 import NewArticle from "./pages/NewArticle";
 import ShowOneArticle from './pages/ShowOneArticle';
 import Articles from './pages/Articles';
+import Admin from "./pages/Admin";
 
 // components
 import NavBar from './components/NavBar'
@@ -119,6 +122,10 @@ function App() {
 
           <Route path="/articles" >
             <Articles setSelectArticle={setSelectArticle}/>
+          </Route>
+
+          <Route path="/admin" >
+            <Admin auth={auth}/>
           </Route>
 
           {/* <Footer /> */}

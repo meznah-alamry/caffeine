@@ -48,40 +48,40 @@ Using Mongoose and AXIOS to upload data to MongoDB
 
 ## Work distribution
 ToDo List d01:
-* Front-End
+ Front-End
  * Home Page ( Asim )
  * Sign-up  ( Tala )
  * Log-In ( Tala )
 
-* Back-End
+ Back-End
  * User Model & Create an API for each root of these pages. ( Meznah )
 
 
 ToDo List d02:
-* Front-End
+Front-End
  * Main Page ( Meznah )
  * New Product Page ( Asim )
-* Back-end
+ Back-end
  * Product Model & Create an API for each root of these pages. ( Tala )
 
 ToDo List d03:
-* Front-End
+Front-End
  * Protect New Product Page ( Tala)
  * Update Nav Bar Add Elements into it. ( Meznah )
  * Update Home Page Style. ( Asim )
-* Back-End
+ Back-End
  * Create API Routes For Cart Page. ( Asim )
  * Create API Routes For New & Articles Page. ( Meznah )
 
 
 ToDo List d04:
-* Front-End
+ Front-End
  * New & Articles Page . ( Meznah )
  * Cart Page  ( Tala )
-* Back-End
+ Back-End
  * Create API Routes For Cart Page. ( Asim )
  * Create API Routes For New & Articles Page. ( Meznah )
- 
+
 ## Created by 
 * Asim Sami
 * Tala Alghamdi

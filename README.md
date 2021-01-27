@@ -1,7 +1,7 @@
 # Caffeine
-
+For coffee lovers 
 ## Description
-it is a website that enables users to buy and sell coffee products. Not only that but also share articles and read other users articles 
+It is a website that enables users to buy and sell coffee products. Not only that but also share articles and read other users articles 
 
 ## Technologies used
 * MongoDB, Mongoose

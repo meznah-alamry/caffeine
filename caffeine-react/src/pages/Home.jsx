@@ -21,7 +21,14 @@ export default function Home(props) {
     // console.log(article)
     if(i < 3){
     return (
-      <Link to={`/${article._id}/article`} onClick={() => props.setSelectArticle(article)} style={{textDecoration:'none'
+      <Link
+      onClick={() =>{
+        props.oneArticleViews(article._id)
+        props.setSelectArticle(article)}
+      }
+       to={`/${article._id}/article`}
+       style={{textDecoration:'none'
+       
     }}>
         <div
          className="art"

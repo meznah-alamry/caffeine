@@ -47,7 +47,6 @@ export default function ShowOneArticle(props) {
 
     }, [])
 
-
     const deleteArticle = (articleId) => {
 
         axios.delete(`http://localhost:5000/api/article/${articleId}`)
@@ -97,7 +96,7 @@ export default function ShowOneArticle(props) {
 
                 {props.auth.isLoggedIn ? <>
 
-                    {props.auth.currentUser._id === selectArtcile.user ? <>
+                    {props.auth.currentUser._id === selectArtcile.user._id ? <>
 
                        
                       <Button className="float-right" variant="outline-warning" onClick={handleShow}>Delete</Button>

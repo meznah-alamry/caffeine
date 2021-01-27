@@ -61,7 +61,7 @@ function App() {
 
    
         console.log('i recived ',articleId)
-        axios.put(`http://localhost:5000/api/article/${articleId}`)
+        axios.put(`http://localhost:5000/api/article//views/${articleId}`)
         .then((res) => {
           
           setOneArticleViwer('done')
@@ -110,7 +110,10 @@ function App() {
             ToSetSearch={ToSetSearch}
             />
           <Route exact path="/">
-            <HomePage setSelectArticle={setSelectArticle}/>
+            <HomePage
+             setSelectArticle={setSelectArticle}
+             oneArticleViews={oneArticleViews}
+             />
           </Route>
 
           <Route exact path="/login">

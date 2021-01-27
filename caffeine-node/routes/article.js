@@ -25,7 +25,7 @@ router.get("/", (req, res) => {
 });
 
 
-router.put("/:articleId", (req, res) => {
+router.put("/views/:articleId", (req, res) => {
   let articleId = req.params.articleId
   Article.findOne({_id: articleId})
   .then(art=>{

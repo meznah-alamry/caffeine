@@ -18,6 +18,9 @@
 .Articles .article-content{
     width: 100%;
     max-width: 400px;
+    min-width: 400px;
+    min-height: 400px;
+    max-height: 400px;
     margin-right: 80px;
     margin-bottom: 40px;
     padding: 15px;
@@ -40,7 +43,9 @@
 
 .Articles .article-content .content{
     font-size: 0.7vw;
-    max-width: 400px;
+    max-width: 350px;
     text-align: justify;
     color:rgb(92, 92, 92);
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

@@ -33,6 +33,7 @@ import NewArticle from "./pages/NewArticle";
 import ShowOneArticle from './pages/ShowOneArticle';
 import Articles from './pages/Articles';
 import Admin from "./pages/Admin";
+import UserProfile from "./pages/UserProfile";
 
 // components
 import NavBar from './components/NavBar'
@@ -53,6 +54,7 @@ function App() {
   const [articlePage, setArticlePage] = useState(false)
   const [productPage, setProductPage] = useState(false)
   const [oneArticleViwer, setOneArticleViwer] = useState('')
+  const [search, setSearch] = useState("");
 
 
   function oneArticleViews(articleId){
@@ -67,6 +69,11 @@ function App() {
         });
       
   
+
+
+  
+   console.log("search in app"  + search);
+
 
   }
   const userLogin = () => {
@@ -84,6 +91,10 @@ function App() {
 
   useEffect(userLogin, []);
 
+
+  const ToSetSearch = (text)=>{ setSearch(text)}
+
+  
   return (
     <div className="">
 
@@ -96,6 +107,7 @@ function App() {
             articlePage={articlePage}
             setProductPage={setProductPage}
             productPage={productPage}
+            ToSetSearch={ToSetSearch}
             />
           <Route exact path="/">
             <HomePage setSelectArticle={setSelectArticle}/>
@@ -131,10 +143,8 @@ function App() {
           </Route>
 
           <Route exact path="/products">
-            <Products
-             setSelectProduct={setSelectProduct}
-            
-             />
+           
+            <Products setSelectProduct={setSelectProduct} search={search}/>
           </Route>
 
           <Route exact path="/cart">
@@ -163,7 +173,17 @@ function App() {
             <Admin auth={auth}/>
           </Route>
 
+
+
+          <Route exact path="/profile" >
+            < UserProfile setAuth = {setAuth}
+            auth={auth}/>
+          </Route>
+
+
+
           <Footer />
+
 
         </Router>
         

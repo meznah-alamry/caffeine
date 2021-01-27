@@ -23,7 +23,7 @@ export default function Articles(props) {
       <Link
       onClick={() =>{
         props.oneArticleViews(article._id)
-         props.setSelectArticle(article)}
+        props.setSelectArticle(article)}
 
     }
       to={`/${article._id}/article`}  style={{textDecoration:'none'}}>

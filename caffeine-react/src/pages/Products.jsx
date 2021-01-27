@@ -7,6 +7,13 @@ import OneProduct from './OneProduct';
 export default function Products(props) {
 
     const [products , setProducts] = useState([])
+   
+
+    // const sreach = (event) =>{setSearchTerm(event.target.value)} 
+    let term = props.search;
+   console.log("search in product " + term);
+
+
 
     useEffect(() => {
         axios.get('http://localhost:5000/api/product/products') 
@@ -17,17 +24,36 @@ export default function Products(props) {
     }, [])
 
 
-   const  allProducts = products.map(product =>{
+   let  allProducts = products.map(product =>{
+   
 
      return <OneProduct
       product= {product}
        setSelectProduct={props.setSelectProduct}
        />
    }) 
+ 
+
+ if (term !== ""){
+
+  const result = products.filter(product => product.title.toLowerCase().includes(term.toLowerCase()) );
+
+   allProducts = result.map(product =>{
+   
+
+    return <OneProduct product= {product} setSelectProduct={props.setSelectProduct} />
+
+ 
+ }) 
+
+  }
 
 
   return (
     <>
+      <div className="allProducts"> 
+
+     
       <div>
             
             <Container className="Products">
@@ -41,7 +67,7 @@ export default function Products(props) {
                 </Row>
 
             </Container>
-
+            </div>
         </div>
 
     </>

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import axios from 'axios'
 import { Button, Modal } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
-import { EditText, EditTextarea } from 'react-edit-text';
 
 
 export default function ShowOneArticle(props) {
@@ -100,9 +99,9 @@ export default function ShowOneArticle(props) {
 
                     {props.auth.currentUser._id === selectArtcile.user ? <>
 
-                        <Button className="float-right" variant="outline-warning" onClick={handleShow}>Delete</Button>
+                       
+                      <Button className="float-right" variant="outline-warning" onClick={handleShow}>Delete</Button>
                         <Button className="mr-5 float-right" variant="outline-info" onClick={handleShowEdit}>EDit</Button>
-
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
                                 <Modal.Title>Confirm Delete</Modal.Title>

@@ -4,10 +4,15 @@ import { useEffect, useState } from "react";
 import axios from 'axios'
 import { Button, Modal } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
-import { EditText, EditTextarea } from 'react-edit-text';
+import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
+import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
+import DateRangeIcon from '@material-ui/icons/DateRange';
 
 export default function ShowOneArticle(props) {
     const history = useHistory();
+    const { article_id } = useParams()
+    const [selectArtcile, setSelectArticle] = useState(props.selectArtcile)
+    const { title, img, content , createdAt } = selectArtcile
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -17,13 +22,20 @@ export default function ShowOneArticle(props) {
     const handleCloseEdit = () => setShowEdit(false);
     const handleShowEdit = () => setShowEdit(true);
 
-    const { article_id } = useParams()
-    const [selectArtcile, setSelectArticle] = useState(props.selectArtcile)
     const [updateArticle, setUpdateArticle] = useState({ title: selectArtcile.title, content: selectArtcile.content, img: selectArtcile.img });
-    const { title, img, content } = selectArtcile
-    console.log(selectArtcile)
     const articleId = selectArtcile._id;
 
+    const artDateMongodb = new Date(createdAt);
+    let year = artDateMongodb.getFullYear();
+    let month = artDateMongodb.getMonth()+1;
+    let dt = artDateMongodb.getDate();
+    if (dt < 10) {
+        dt = '0' + dt;
+      }
+      if (month < 10) {
+        month = '0' + month;
+      }
+    const artDate = year+'-' + month + '-'+dt;
     useEffect(() => {
         if (!title) {
             axios.get('http://localhost:5000/api/article/')
@@ -70,22 +82,28 @@ export default function ShowOneArticle(props) {
 
     return (
         <>
-            <div className="art1" style={{ width: '60%', height: '500px', margin: '0 auto' }}>
-                <img style={{ height: '500px', width: '100%' }}
-                    src={img}
-                    alt=""
-                />
 
-                <h1>{title}</h1>
-                <p>{content}</p>
+              <div className="ShowOneArticle" style={{width:'50%', height:'500px', margin:'0 auto'}}>
+               <h1>{title}</h1>
+               <p><DateRangeIcon /> {artDate}   <VisibilityOutlinedIcon /> {selectArtcile.views}</p>
+
+               <hr/>
+            <img style={{height:'500px', width:'100%'}}
+                src={img}
+                alt=""
+              />
+              
+
+               <p>{content}</p>
+                
 
                 {props.auth.isLoggedIn ? <>
 
-                    {props.auth.currentUser._id === selectArtcile.user ? <>
+                    {props.auth.currentUser._id === selectArtcile.user._id ? <>
 
-                        <Button className="float-right" variant="outline-warning" onClick={handleShow}>Delete</Button>
-                        <Button className="mr-5 float-right" variant="outline-info" onClick={handleShowEdit}>EDit</Button>
-
+                       
+                      <Button className="float-right" variant="outline-warning" onClick={handleShow}>Delete</Button>
+                        <CreateOutlinedIcon style={{fontSize: "25px", color: "#7d8179", cursor:"pointer",  fontSize:"40px"}} className="mr-5 float-right" variant="outline-info" onClick={handleShowEdit}/>  
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
                                 <Modal.Title>Confirm Delete</Modal.Title>

@@ -3,7 +3,7 @@ const router = express.Router()
 const Article = require('../models/article')
 
 router.get("/", (req, res) => {
-    Article.find()
+    Article.find().populate('user').sort({updatedAt: -1}).exec()
       .then((articles) => {
         res.json({ msg: articles });
       })
@@ -21,6 +21,23 @@ router.get("/", (req, res) => {
         res.json({msg: "add article", newArticle})
        
     });
+
+});
+
+
+router.put("/:articleId", (req, res) => {
+  let articleId = req.params.articleId
+  Article.findOne({_id: articleId})
+  .then(art=>{
+    let updateViews = parseInt(art.views)+1
+    console.log(art.views)
+    Article.updateOne({ _id :articleId },{ views: ` ${updateViews}`}, (err, newUser) => {
+      // console.log('number of views ', newUser)
+
+
+});
+  })
+ 
 
 });
 

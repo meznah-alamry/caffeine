@@ -7,37 +7,67 @@ import OneProduct from './OneProduct';
 export default function Products(props) {
 
     const [products , setProducts] = useState([])
+   
+
+    // const sreach = (event) =>{setSearchTerm(event.target.value)} 
+    let term = props.search;
+   console.log("search in product " + term);
+
+
 
     useEffect(() => {
         axios.get('http://localhost:5000/api/product/products') 
         .then(res =>{     
             setProducts(res.data.msg)
+            
         })
     }, [])
 
 
-   const  allProducts = products.map(product =>{
+   let  allProducts = products.map(product =>{
+   
 
-     return <OneProduct product= {product} setSelectProduct={props.setSelectProduct} />
+     return <OneProduct
+      product= {product}
+       setSelectProduct={props.setSelectProduct}
+       />
    }) 
+ 
+
+ if (term !== ""){
+
+  const result = products.filter(product => product.title.toLowerCase().includes(term.toLowerCase()) );
+
+   allProducts = result.map(product =>{
+   
+
+    return <OneProduct product= {product} setSelectProduct={props.setSelectProduct} />
+
+ 
+ }) 
+
+  }
 
 
   return (
     <>
+      <div className="allProducts"> 
+
+     
       <div>
             
-            <Container >
-                <h1 className="mt-5" style={{ textAlign: "center" }}>All products</h1>
+            <Container className="Products">
+                
 
                 {/* Products Cards */}
-                <Row className="justify-content-md-center">
+                <Row className="justify-content-md-center" style={{margin: '10px'}}>
                    
                     {allProducts}
                     
                 </Row>
 
             </Container>
-
+            </div>
         </div>
 
     </>

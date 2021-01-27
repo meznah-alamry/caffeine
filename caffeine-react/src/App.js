@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import axios from "axios";
+
+
 import "bootstrap/dist/css/bootstrap.min.css";
 // styles
 import "./App.css";
@@ -15,6 +18,7 @@ import "./style/Cart.css";
 import "./style/login.css";
 import "./style/admin.css";
 import "./style/articles.css"
+import "./style/show-one-article.css"
 
 // pages
 import Login from "./pages/Login";
@@ -29,6 +33,7 @@ import NewArticle from "./pages/NewArticle";
 import ShowOneArticle from './pages/ShowOneArticle';
 import Articles from './pages/Articles';
 import Admin from "./pages/Admin";
+import UserProfile from "./pages/UserProfile";
 
 // components
 import NavBar from './components/NavBar'
@@ -46,7 +51,28 @@ function App() {
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
   const [selectProduct, setSelectProduct] = useState({});
   const [selectArtcile, setSelectArticle] = useState({});
+  const [articlePage, setArticlePage] = useState(false)
+  const [productPage, setProductPage] = useState(false)
+  const [oneArticleViwer, setOneArticleViwer] = useState('')
+  const [search, setSearch] = useState("");
+  const[productLenght, SetProductLenght] = useState(0)
 
+  function oneArticleViews(articleId){
+
+   
+        console.log('i recived ',articleId)
+        axios.put(`http://localhost:5000/api/article/${articleId}`)
+        .then((res) => {
+          
+          setOneArticleViwer('done')
+
+        });
+      
+  
+   console.log("search in app"  + search);
+
+
+  }
   const userLogin = () => {
     if (localStorage.jwtToken) {
       const jwtToken = localStorage.jwtToken;
@@ -62,12 +88,25 @@ function App() {
 
   useEffect(userLogin, []);
 
+
+  const ToSetSearch = (text)=>{ setSearch(text)}
+
+  
   return (
     <div className="">
 
       {dataLoading && (
         <Router>
-          <NavBar isLoggedIn={auth.isLoggedIn} loginCallback={userLogin} />
+          <NavBar
+           isLoggedIn={auth.isLoggedIn}
+            loginCallback={userLogin}
+            setArticlePage={setArticlePage}
+            articlePage={articlePage}
+            setProductPage={setProductPage}
+            productPage={productPage}
+            ToSetSearch={ToSetSearch}
+            productLenght={productLenght}
+            />
           <Route exact path="/">
             <HomePage setSelectArticle={setSelectArticle}/>
           </Route>
@@ -102,12 +141,14 @@ function App() {
           </Route>
 
           <Route exact path="/products">
-            <Products setSelectProduct={setSelectProduct} />
+           
+            <Products setSelectProduct={setSelectProduct} search={search}/>
           </Route>
 
           <Route exact path="/cart">
             <Cart  
-            auth={auth} />
+            auth={auth}
+            SetProductLenght={SetProductLenght} />
           </Route>
 
           
@@ -121,14 +162,27 @@ function App() {
           </Route>
 
           <Route path="/articles" >
-            <Articles setSelectArticle={setSelectArticle}/>
+            <Articles
+             setSelectArticle={setSelectArticle}
+             oneArticleViews={oneArticleViews}
+             />
           </Route>
 
           <Route path="/admin" >
             <Admin auth={auth}/>
           </Route>
 
-          {/* <Footer /> */}
+
+
+          <Route exact path="/profile" >
+            < UserProfile setAuth = {setAuth}
+            auth={auth}/>
+          </Route>
+
+
+
+          <Footer />
+
 
         </Router>
         

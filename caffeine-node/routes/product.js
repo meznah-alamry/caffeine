@@ -10,6 +10,8 @@ router.get("/products", (req, res) => {
       .catch((err) => res.json({ msg: err }));
   });
 
+
+
 router.post("/new-product", (req, res) => {
     console.log(req.body);
     const { title ,description , img ,price ,state , qty} = req.body;
@@ -21,6 +23,16 @@ router.post("/new-product", (req, res) => {
     });
 });
 
+
+router.get("/products/:id", (res,req)=>{
+  let id = req.params.id
+  console.log(id)
+  Product.findById(id)
+  .then(product=>{
+    console.log(product)
+    res.json({msg:product})
+  })
+})
 
 
 

@@ -18,6 +18,7 @@ export default function Cart(props) {
   const [modalShow, setModalShow] = React.useState(false);
   const [show, setShow] = useState(false);
   const [checkOutState, setCheckOutState] = useState(false);
+  const [order, setOrder] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -73,6 +74,8 @@ export default function Cart(props) {
     return total;
   };
 
+  // console.log("from cart page",alluserProducts.length)
+
   const cartProducts = alluserProducts.map((product) => {
     return (
       <>
@@ -124,7 +127,7 @@ export default function Cart(props) {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+          <Button variant="secondary" onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -141,15 +144,29 @@ export default function Cart(props) {
 
         setTimeout(()=>{
           setModalShow(true)
+          setOrder(res)
+          console.log('order',order)
         }, 100);
 
         
       });
   }
-
+  props.SetProductLenght(alluserProducts.length)
+  console.log("from cart",alluserProducts.length)
   return (
     <div className="Cart">
-      <h1>Shopping Cart</h1>
+      <div style={{
+
+       display: 'flex',
+       flexDirection: 'column',
+       justifyContent: 'center',
+       textAlign: 'left'
+
+      }}>
+      <h1 style={{
+        margin: '30px',
+        fontSize: '2em'
+      }}>Shopping Cart</h1>
       <div>
         {" "}
         <hr></hr>
@@ -166,7 +183,7 @@ export default function Cart(props) {
         }}
       >
         {checkOutState? 
-        <Button variant="primary" onClick={handleShow}>
+        <Button variant="secondary" onClick={handleShow}>
         Checkout
       </Button>
         :
@@ -191,7 +208,7 @@ export default function Cart(props) {
             Close
           </Button>
           <Button
-            variant="primary"
+            variant="secondary"
             onClick={() => {
               
               handleClose();
@@ -207,6 +224,7 @@ export default function Cart(props) {
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
+    </div>
     </div>
   );
 }

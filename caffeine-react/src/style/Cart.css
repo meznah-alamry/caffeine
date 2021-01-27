@@ -1,7 +1,6 @@
 
 .OneCardProduct {
     display: flex;
-    
 }
 
 .OneCardProduct img{
@@ -13,7 +12,7 @@
     width: 100px;
     margin: 100px;
     text-align: center;
-  
+
 }
 
 
@@ -29,7 +28,6 @@
 
 .OneCardProduct p.ex1 {
     width: 350px;
-    
   }
 
 

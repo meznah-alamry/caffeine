@@ -43,5 +43,17 @@ router.delete('/:userId/deleteuser', (req, res) => {
 
 })
 
+router.put('/:userId', (req, res)=>{
+    let userId = req.params.userId
+    const isAdmin = req.body.isAdmin
+    console.log(isAdmin)
+    User.findOne({_id: userId})
+    .then(user=>{
+        User.updateOne({_id: userId}, {isAdmin: !isAdmin}, (err, updateUser)=>{
+            console.log("user isAdmin", updateUser)
+            res.json({msg: "update user", updateUser})
+        })
+    })
+})
 
 module.exports = router;

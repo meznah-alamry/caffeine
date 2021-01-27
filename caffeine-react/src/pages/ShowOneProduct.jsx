@@ -11,14 +11,16 @@ export default function ShowOneProduct(props) {
 
   const { title, img, description, price, state, qty } = selectProduct;
   const userId = props.auth.currentUser._id;
-  console.log(product)
+  console.log(id)
+  
   useEffect(() => {
-    if (!title) {
-      axios.get("http://localhost:5000/api/product/products").then((res) => {
-        let product = res.data.find((ele) => ele._id == id);
+
+      axios.get(`http://localhost:5000/api/product/products/?=${id}`)
+      .then(res => {
+        console.log(res.data.msg)
+        let product = res.data.msg.find((ele) => ele._id == id);
         setSelectProduct(product);
-      });
-    }
+      })
   }, []);
 
   const onChangeInput = ({ target: { name, value } }) => {
@@ -41,7 +43,7 @@ export default function ShowOneProduct(props) {
       )
 
     })
-
+    
   return (
     <div>
       <Container className="mt-5 ShowOneProduct">
@@ -52,7 +54,11 @@ export default function ShowOneProduct(props) {
           <Col md="6">
             <h1>{title}</h1>
             <p> {description}</p>
-            <h3>{price}</h3>
+            <h3
+             style={{color: 'green'}}
+
+             >${price}
+             </h3>
             {qty ? (
               <h5 style={{ color: "green" }}>In Stock</h5>
               ) : (
@@ -77,7 +83,7 @@ export default function ShowOneProduct(props) {
                 {qtyNumberDropDown}
               </Form.Control>
             </Form.Group>
-            <Link to="/products">
+            <Link to="/cart">
               <Button
                 onClick={() => addProductToCart()}
                 variant="secondary"

@@ -38,7 +38,7 @@ export default function Singup(props) {
     <>
       <div className="cont">
         <Formik
-        
+         initialValues = {{name: '', email: '', password: ''}}
          onSubmit ={values =>{console.log(values)}}
         
         >

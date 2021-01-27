@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import axios from "axios";
+
+
 import "bootstrap/dist/css/bootstrap.min.css";
 // styles
 import "./App.css";
@@ -15,6 +18,7 @@ import "./style/Cart.css";
 import "./style/login.css";
 import "./style/admin.css";
 import "./style/articles.css"
+import "./style/show-one-article.css"
 
 // pages
 import Login from "./pages/Login";
@@ -46,7 +50,25 @@ function App() {
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
   const [selectProduct, setSelectProduct] = useState({});
   const [selectArtcile, setSelectArticle] = useState({});
+  const [articlePage, setArticlePage] = useState(false)
+  const [productPage, setProductPage] = useState(false)
+  const [oneArticleViwer, setOneArticleViwer] = useState('')
 
+
+  function oneArticleViews(articleId){
+
+   
+        console.log('i recived ',articleId)
+        axios.put(`http://localhost:5000/api/article/${articleId}`)
+        .then((res) => {
+          
+          setOneArticleViwer('done')
+
+        });
+      
+  
+
+  }
   const userLogin = () => {
     if (localStorage.jwtToken) {
       const jwtToken = localStorage.jwtToken;
@@ -67,7 +89,14 @@ function App() {
 
       {dataLoading && (
         <Router>
-          <NavBar isLoggedIn={auth.isLoggedIn} loginCallback={userLogin} />
+          <NavBar
+           isLoggedIn={auth.isLoggedIn}
+            loginCallback={userLogin}
+            setArticlePage={setArticlePage}
+            articlePage={articlePage}
+            setProductPage={setProductPage}
+            productPage={productPage}
+            />
           <Route exact path="/">
             <HomePage setSelectArticle={setSelectArticle}/>
           </Route>
@@ -102,7 +131,10 @@ function App() {
           </Route>
 
           <Route exact path="/products">
-            <Products setSelectProduct={setSelectProduct} />
+            <Products
+             setSelectProduct={setSelectProduct}
+            
+             />
           </Route>
 
           <Route exact path="/cart">
@@ -121,14 +153,17 @@ function App() {
           </Route>
 
           <Route path="/articles" >
-            <Articles setSelectArticle={setSelectArticle}/>
+            <Articles
+             setSelectArticle={setSelectArticle}
+             oneArticleViews={oneArticleViews}
+             />
           </Route>
 
           <Route path="/admin" >
             <Admin auth={auth}/>
           </Route>
 
-          {/* <Footer /> */}
+          <Footer />
 
         </Router>
         

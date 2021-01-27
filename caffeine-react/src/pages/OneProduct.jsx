@@ -7,6 +7,14 @@ export default function OneProduct(props) {
     <>
       {props.product && (
         <Col md="4" sm="4" className="mt-3">
+           <Link
+           onClick={() =>{
+            props.setSelectProduct(props.product)
+            
+           } }
+           className="one-product"
+           to={`/products/${props.product._id}`}
+          >
           <Card className="product">
             <Card.Img
               variant="top"
@@ -19,25 +27,19 @@ export default function OneProduct(props) {
               <Card.Text>
                 {props.product.state}
                 <br />
-                <h5 className="mt-2 text-center"> {props.product.price} </h5>
+                <h5 style={{color: 'green'}}className="mt-2 text-center">$ {props.product.price} </h5>
               </Card.Text>
               <Row>
                 <Col className="btn-more-info-space">
-                  <Link to={`/products/${props.product._id}`}
-                   >
-                    {" "}
-                    <Button
-                    variant="secondary" size="sm"
-                      onClick={() => props.setSelectProduct(props.product)}
-                    >
-                      {" "}
-                      More Info
-                    </Button>{" "}
-                  </Link>
+                 
+                   
+
+                  
                 </Col>
               </Row>
             </Card.Body>
           </Card>
+          </Link>
         </Col>
       )}
 

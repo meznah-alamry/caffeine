@@ -15,9 +15,11 @@ const articleSchema = new mongoose.Schema({
         required :true
     },
 
-    user: {
-        type :String , 
-        required :true
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
+
+    views: {
+        type: String,
+        default: '0'
     }
 
 } , {timestamps :true})

@@ -12,13 +12,17 @@ export default function Products(props) {
         axios.get('http://localhost:5000/api/product/products') 
         .then(res =>{     
             setProducts(res.data.msg)
+            
         })
     }, [])
 
 
    const  allProducts = products.map(product =>{
 
-     return <OneProduct product= {product} setSelectProduct={props.setSelectProduct} />
+     return <OneProduct
+      product= {product}
+       setSelectProduct={props.setSelectProduct}
+       />
    }) 
 
 
@@ -26,11 +30,11 @@ export default function Products(props) {
     <>
       <div>
             
-            <Container >
-                <h1 className="mt-5" style={{ textAlign: "center" }}>All products</h1>
+            <Container className="Products">
+                
 
                 {/* Products Cards */}
-                <Row className="justify-content-md-center">
+                <Row className="justify-content-md-center" style={{margin: '10px'}}>
                    
                     {allProducts}
                     

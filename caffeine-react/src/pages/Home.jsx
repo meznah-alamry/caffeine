@@ -16,27 +16,36 @@ export default function Home(props) {
   }, [])
 
 
-  const allArticles = articles.map(article => {
+  const allArticles = articles.map((article,i) => {
 
-    console.log(article)
+    // console.log(article)
+    if(i < 3){
     return (
-      <Link to={`/${article._id}/article`} onClick={() => props.setSelectArticle(article)} style={{textDecoration:'none'}}>
-        <div className="art1">
-          <img
-            src={article.img}
-            alt=""
-          />
-          <h1>{article.title}</h1>
-          {/* <p>{article.content}</p> */}
-          <LinesEllipsis className="content"
-            text={article.content}
-            maxLine='3'
-            ellipsis='....  (read more)'
-            trimRight
-          />
+      <Link to={`/${article._id}/article`} onClick={() => props.setSelectArticle(article)} style={{textDecoration:'none'
+    }}>
+        <div
+         className="art"
+         style={{
+           backgroundImage: `url(${article.img})`,
+           backgroundSize: 'cover'
+           }} >
+          <div class="img-artcile-shadow"/>
+          <div style={{
+            width: '100%',
+            hight: '40%',
+            position: 'absolute',
+            bottom: '0',
+            margin: '0px 0px 0px 5px'
+          }}>
+          <p className="art-title"   
+           >
+             {article.title}
+           </p>
+          </div>
         </div>
       </Link>
     )
+  }
   })
 
 
@@ -45,10 +54,27 @@ export default function Home(props) {
     <div className="Home">
       <Container fluid className="container-section-ov">
         <Row>
-          <Image src="https://i.imgur.com/STVyYtG.jpg" className="header-img" />
+          <div  className="header-img" >
+             <div class="img-shadow"/>
+             <h1>Welcome to caffeine website!</h1>
+            </div>
         </Row>
         <Row>
-          <div class="article-header">
+          <div className="article-header">
+            <Link to="/articles" style={{textDecoration:'none'}}> <h1>Articles</h1> </Link>
+          </div>
+        </Row>
+        <Row>
+          <div className="article-section">
+
+            {allArticles}
+
+
+          </div>
+        </Row>
+
+        <Row>
+          <div className="article-header">
             <Link to="/articles" style={{textDecoration:'none'}}> <h1>Articles</h1> </Link>
           </div>
         </Row>

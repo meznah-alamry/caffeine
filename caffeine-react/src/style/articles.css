@@ -2,14 +2,17 @@
     width: 80%;
     padding-bottom: 50px;
     border-left: 1px solid white;
-    margin: 0 auto;
+    margin: auto;
 }
+
 
 .Articles .article-page{
     width: 100%;
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+
 }
 
 .Articles .article-content{
@@ -17,11 +20,16 @@
     max-width: 400px;
     margin-right: 80px;
     margin-bottom: 40px;
+    padding: 15px;
+    box-shadow: 0px 0px 10px #888888;
+}
+.Articles .article-content:hover{
+    box-shadow: 0px 0px 5px red;
 }
 
 .Articles .article-content img{
     width: 100%;
-    max-width: 400px;
+    max-width: 100%;
     min-height: 250px;
     max-height: 250px;
 }

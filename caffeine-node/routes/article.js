@@ -24,6 +24,7 @@ router.get("/", (req, res) => {
 
 });
 
+
 router.put("/:articleId", (req, res) => {
   let articleId = req.params.articleId
   Article.findOne({_id: articleId})
@@ -40,8 +41,22 @@ router.put("/:articleId", (req, res) => {
 
 });
 
-router.delete('/:articleId' , (req, res)=>{
+router.put('/:articleId/edit', (req, res)=>{
 
+  let articleId = req.params.articleId
+  const {title, content, img} = req.body;
+  const user = req.body.id;
+console.log(req.body)
+  Article.findOne({_id: articleId})
+  .then(article=>{
+    Article.updateOne({_id: articleId}, {title :title , content:content , img:img, user: user}, (err, updateArticle)=>{
+      console.log("updated article", updateArticle)
+      res.json({msg: "updated article", updateArticle})
+    })
+  })
+})
+
+router.delete('/:articleId' , (req, res)=>{
 
   let articleId = req.params.articleId
 

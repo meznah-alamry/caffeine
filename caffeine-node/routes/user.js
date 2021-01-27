@@ -46,7 +46,7 @@ router.post("/register", (req, res) => {
 
 router.post("/login", async (req, res) => {
   let { email, password } = req.body;
-  
+ 
   email = email.toLowerCase();
   const user = await User.findOne({ email: email }); // its same to =>  User.findOne({email:email}).then(user => { })
 

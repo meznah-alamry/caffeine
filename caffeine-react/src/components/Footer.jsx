@@ -34,9 +34,9 @@ export default function Footer() {
             </li>
 
             <li>
-              <h6>Name3</h6>
-              <a href="#">Linked In</a><br/>
-              <a href="#">Github</a><br/>
+              <h6>Tala Alghamdi</h6>
+              <a href="https://www.linkedin.com/in/tala-alghamdi">Linked In</a><br/>
+              <a href="https://git.generalassemb.ly/talamajed">Github</a><br/>
             </li>
 
           </ul>

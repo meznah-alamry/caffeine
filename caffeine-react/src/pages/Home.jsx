@@ -85,6 +85,18 @@ export default function Home(props) {
 
 
           </div>
+        </Row> 
+
+
+        <Row>
+          <div >
+
+           <p>Caffeine enables users to buy and sell coffee products. Not only that but also enables
+           them to share articles and read other users articles
+           </p>
+
+          
+          </div>
         </Row>
       </Container>
     </div>

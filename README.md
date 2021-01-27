@@ -13,7 +13,12 @@ It is a website that enables users to buy and sell coffee products. Not only tha
 * Bootstrap 
 
 ## Wireframes
+### Home Page
 ![Wireframes](/Caffeine.png)
+### Products Page
+![Wireframes](/products.png)
+### Articles Page
+![Wireframes](/articles.png)
 
 ## User Stories
 User must be able to:

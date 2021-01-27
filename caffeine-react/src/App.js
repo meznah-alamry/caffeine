@@ -29,6 +29,7 @@ import NewArticle from "./pages/NewArticle";
 import ShowOneArticle from './pages/ShowOneArticle';
 import Articles from './pages/Articles';
 import Admin from "./pages/Admin";
+import UserProfile from "./pages/UserProfile";
 
 // components
 import NavBar from './components/NavBar'
@@ -134,6 +135,14 @@ function App() {
           <Route path="/admin" >
             <Admin auth={auth}/>
           </Route>
+
+
+          <Route exact path="/profile" >
+            < UserProfile setAuth = {setAuth}
+            auth={auth}/>
+          </Route>
+
+
 
           {/* <Footer /> */}
 

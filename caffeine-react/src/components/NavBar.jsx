@@ -34,6 +34,8 @@ export default function NavBar(props) {
               Signup
           </Nav.Link>
 
+
+
           </> : <> <Nav.Link as={Link} to="/new-article">
             Add Article
           </Nav.Link>

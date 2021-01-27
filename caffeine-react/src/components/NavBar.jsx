@@ -9,7 +9,7 @@ export default function NavBar(props) {
   const [searchTerm, setSearchTerm] = useState("");
 
  
-
+console.log("from navbar", props.productLenght)
   return (
     <div className="NavBar">
       <Navbar className="navbar" variant="dark">
@@ -118,8 +118,7 @@ export default function NavBar(props) {
                       props.setProductPage(false)
                       props.setArticlePage(false)
                }}
-               >  <ShoppingCartIcon
-                style={{ margin: "auto 50px auto auto", fontSize: "25px", color: "#7d8179" }} /> </Nav.Link>
+               > <span style={{color:'#d1290a'}}>{props.productLenght}</span><ShoppingCartIcon style={{ marginTop: "6px", marginRight: "15px", fontSize: "25px", color: "#7d8179" }}/>  </Nav.Link>
 
              
 

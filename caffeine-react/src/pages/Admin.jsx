@@ -36,6 +36,18 @@ export default function Admin(props) {
 
     }, [changeAfterDelete])
 
+    const changeUserPermission = (e, user) =>{
+        // console.log(e, user.isAdmin)
+        const isAdmin = user.isAdmin
+        console.log(isAdmin)
+        if(e==false&&isAdmin==true || e==true&&isAdmin==false){
+            axios.put(`http://localhost:5000/api/admin/${user._id}`, {isAdmin: isAdmin})
+            .then(res=>{
+                console.log(res)
+            })
+        }
+    }
+
     /*    *****    DELETE ARTICLE    *****       */
     const deleteArticle = (article) => {
         // console.log(article)
@@ -126,19 +138,16 @@ export default function Admin(props) {
                         src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'
                         alt=""
                     />
-                    <h5 className="container-title">Name: {user.name}, Email: {user.email}</h5>
+                    <h5 className="container-title">Name: {user.name}, Email: {user.email}, </h5> 
 
-                    {/* <p style={{ marginTop: '10px', float: 'left', marginRight:'10px' }}>Admin: </p>
+                    <p style={{ marginTop: '12px', float: 'left', marginRight:'10px', fontSize:'18px' }}>Admin: </p>
                     
-
                     <BootstrapSwitchButton
-                        checked={false}
+                        checked={user.isAdmin}
                         onlabel='Yes'
                         offlabel='NO'
-                        onChange={(checked) => {
-                            this.setState(checked)
-                        }}
-                    /> */}
+                        onChange={(e)=>changeUserPermission(e,user)}
+                    />
 
                     <p className="admin-delete-btn" onClick={() => deleteUser(user)}>X</p>
                 </div>

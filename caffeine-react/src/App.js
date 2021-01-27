@@ -88,6 +88,7 @@ function App() {
             setProductPage={setProductPage}
             productPage={productPage}
             ToSetSearch={ToSetSearch}
+            productLenght={productLenght}
             />
           <Switch 
           >
@@ -142,7 +143,8 @@ function App() {
 
           <Route exact path="/cart">
             <Cart  
-            auth={auth} />
+            auth={auth}
+            SetProductLenght={SetProductLenght} />
           </Route>
 
           

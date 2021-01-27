@@ -75,7 +75,13 @@ export default function Cart(props) {
     return total;
   };
 
+<<<<<<< HEAD
   const cartProducts = alluserProducts.map((product,i) => {
+=======
+  // console.log("from cart page",alluserProducts.length)
+
+  const cartProducts = alluserProducts.map((product) => {
+>>>>>>> origin/Meznah
     return (
       <>
         <OneCardproduct
@@ -151,7 +157,8 @@ export default function Cart(props) {
         
       });
   }
-
+  props.SetProductLenght(alluserProducts.length)
+  console.log("from cart",alluserProducts.length)
   return (
     <div className="Cart">
       <div style={{

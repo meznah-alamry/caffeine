@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import API_URL from '../apiConfig.js'
 import React from "react";
+=======
+import axios from "axios";
+import React, { useEffect } from "react";
+>>>>>>> origin/Meznah
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 

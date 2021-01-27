@@ -35,9 +35,9 @@ export default function Footer() {
             </li>
 
             <li>
-              <h6>Name3</h6>
+              <h6>Meznah Alamry</h6>
               <a href="#">Linked In</a><br/>
-              <a href="#">Github</a><br/>
+              <a href="https://git.generalassemb.ly/meznah">Github</a><br/>
             </li>
 
           </ul>

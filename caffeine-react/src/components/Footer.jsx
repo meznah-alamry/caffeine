@@ -1,3 +1,4 @@
+import API_URL from '../apiConfig.js'
 import React from 'react'
 import { Navbar, Nav, Container , Modal, Button } from "react-bootstrap";
 
@@ -19,12 +20,12 @@ export default function Footer() {
         </Modal.Header>
         <Modal.Body>
           <p>This site created by © Horizon Team  2021-1 </p>
-          <h5>Members:</h5>
+          <p>Members:</p>
           <ul>
             <li>
               <h6>Asim Sami</h6>
-              <a href="#">Linked In</a><br/>
-              <a href="#">Github</a><br/>
+              <a href="https://www.linkedin.com/in/asim-sami-software-engineer/" target="_blank">Linked In</a><br/>
+              <a href="https://git.generalassemb.ly/asim-sami" target="_blank">Github</a><br/>
             </li>
 
             <li>

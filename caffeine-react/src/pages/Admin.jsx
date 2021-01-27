@@ -1,3 +1,4 @@
+import API_URL from '../apiConfig.js'
 import React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -13,20 +14,20 @@ export default function Admin(props) {
 
     useEffect(() => {
         /*    *****    GET ALL ARTICLES    *****       */
-        axios.get('http://localhost:5000/api/article/')
+        axios.get(`${API_URL}/api/article/`)
             .then(res => {
                 setArticles(res.data.msg)
             })
 
         /*     *****    GET ALL PRODUCTS    *****      */
-        axios.get('http://localhost:5000/api/product/products')
+        axios.get(`${API_URL}/api/product/products`)
             .then(res => {
                 setProducts(res.data.msg)
             })
 
 
         /*     *****    GET ALL USERS    *****      */
-        axios.get('http://localhost:5000/api/admin/users')
+        axios.get(`${API_URL}/api/admin/users`)
             .then(res => {
                 //data.msg[0].name
                 // console.log(res.data)
@@ -39,7 +40,7 @@ export default function Admin(props) {
     const deleteArticle = (article) => {
         // console.log(article)
         const articleId = article._id;
-        axios.delete(`http://localhost:5000/api/article/${articleId}`)
+        axios.delete(`${API_URL}/api/article/${articleId}`)
             .then(data => {
                 // console.log(data)
                 setChangeAfterDelete(!changeAfterDelete)
@@ -50,7 +51,7 @@ export default function Admin(props) {
     const deleteProduct = (product) => {
         console.log(product._id)
         const productId = product._id;
-        axios.delete(`http://localhost:5000/api/admin/${productId}`)
+        axios.delete(`${API_URL}/api/admin/${productId}`)
             .then(data => {
                 // console.log(data)
                 setChangeAfterDelete(!changeAfterDelete)
@@ -61,7 +62,7 @@ export default function Admin(props) {
     const deleteUser = (user) => {
         console.log(user._id)
         const userId = user._id;
-        axios.delete(`http://localhost:5000/api/admin/${userId}/deleteuser`)
+        axios.delete(`${API_URL}/api/admin/${userId}/deleteuser`)
             .then(data => {
                 // console.log(data)
                 setChangeAfterDelete(!changeAfterDelete)
@@ -70,12 +71,14 @@ export default function Admin(props) {
 
 
     /*    *****    MAP ALL ARTICLES    *****       */
-    const allArticles = articles.map(article => {
+    const allArticles = articles.map((article,i) => {
         // console.log(article)
 
         return (
             <>
-                <div className='content-container'>
+                <div 
+                key={i}
+                className='content-container'>
                     <img
                         src={article.img}
                         alt=""
@@ -91,11 +94,13 @@ export default function Admin(props) {
 
 
     /*    *****    MAP ALL PRODUCTS    *****       */
-    const allProducts = products.map(product => {
+    const allProducts = products.map((product,i) => {
 
         return (
             <>
-                <div className='content-container'>
+                <div 
+                key={i}
+                className='content-container'>
                     <img
                         src={product.img}
                         alt=""
@@ -110,11 +115,13 @@ export default function Admin(props) {
 
 
     /*    *****    MAP ALL USERS    *****       */
-    const allUsers = users.map(user => {
+    const allUsers = users.map((user,i) => {
 
         return (
             <>
-                <div className='content-container'>
+                <div
+                 key={i}
+                 className='content-container'>
                     <img
                         src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'
                         alt=""
@@ -145,16 +152,16 @@ export default function Admin(props) {
     if (!props.auth.isLoggedIn) {
         return (
             <>
-                <div class="alert alert-danger" role="alert">
-                    <strong>Oh !!!</strong> <Link to="/login" class="alert-link">You have to login first</Link> and try submitting again.
+                <div className="alert alert-danger" role="alert">
+                    <strong>Oh !!!</strong> <Link to="/login" className="alert-link">You have to login first</Link> and try submitting again.
                 </div>
             </>
         )
     } else if (!props.auth.currentUser.isAdmin) {
         return (
             <>
-                <div class="alert alert-warning" role="alert">
-                    <strong>Oh !!!</strong> <Link to="/" class="alert-link">You dont have permission</Link>  to access this page.
+                <div className="alert alert-warning" role="alert">
+                    <strong>Oh !!!</strong> <Link to="/" className="alert-link">You dont have permission</Link>  to access this page.
                 </div>
             </>
         )

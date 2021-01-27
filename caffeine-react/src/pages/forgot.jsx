@@ -1,3 +1,4 @@
+import API_URL from '../apiConfig.js'
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
@@ -17,8 +18,7 @@ export default function Forgot(props) {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post("http://localhost:5000/api/user/forgot", credentials)
+    axios.post(`${API_URL}/api/user/forgot`, credentials)
       .then((res) => {
         console.log("Express backend /forgot response", res);
 

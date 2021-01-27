@@ -1,3 +1,4 @@
+import API_URL from '../apiConfig.js'
 import React from "react";
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Image } from "react-bootstrap";
@@ -9,26 +10,27 @@ export default function Home(props) {
   const [articles, setArticles] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/article/')
+    axios.get(`${API_URL}/api/article/`)
       .then(res => {
         setArticles(res.data.msg)
       })
   }, [])
 
-
+  articles.sort((b, a) => a.views - b.views)
   const allArticles = articles.map((article,i) => {
 
     // console.log(article)
     if(i < 3){
     return (
       <Link
+      key={i}
       onClick={() =>{
         props.oneArticleViews(article._id)
         props.setSelectArticle(article)}
       }
        to={`/${article._id}/article`}
        style={{textDecoration:'none'
-       
+
     }}>
         <div
          className="art"
@@ -36,7 +38,7 @@ export default function Home(props) {
            backgroundImage: `url(${article.img})`,
            backgroundSize: 'cover'
            }} >
-          <div class="img-artcile-shadow"/>
+          <div className="img-artcile-shadow"/>
           <div style={{
             width: '100%',
             hight: '40%',
@@ -62,8 +64,12 @@ export default function Home(props) {
       <Container fluid className="container-section-ov">
         <Row>
           <div  className="header-img" >
-             <div class="img-shadow"/>
-             <h1>Welcome to caffeine website!</h1>
+             <div className="img-shadow"/>
+             <h1 style={{
+               backgroundColor: 'rgba(0, 0, 0, 0.418)',padding: '15px'
+             }}>Welcome to caffeine for coffee lovers
+
+</h1>
             </div>
         </Row>
         <Row>
@@ -80,19 +86,7 @@ export default function Home(props) {
           </div>
         </Row>
 
-        <Row>
-          <div className="article-header">
-            <Link to="/articles" style={{textDecoration:'none'}}> <h1>Articles</h1> </Link>
-          </div>
-        </Row>
-        <Row>
-          <div className="article-section">
-
-            {allArticles}
-
-
-          </div>
-        </Row>
+    
       </Container>
     </div>
   );

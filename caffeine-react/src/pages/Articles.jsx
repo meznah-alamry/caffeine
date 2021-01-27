@@ -1,63 +1,88 @@
+import API_URL from "../apiConfig.js";
 import React from "react";
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Image } from "react-bootstrap";
 import axios from "axios";
-import { Link } from 'react-router-dom';
-import LinesEllipsis from 'react-lines-ellipsis'
+import { Link } from "react-router-dom";
+import LinesEllipsis from "react-lines-ellipsis";
 
 export default function Articles(props) {
-  const [articles, setArticles] = useState([])
-
+  const [articles, setArticles] = useState([]);
   useEffect(() => {
-    axios.get('http://localhost:5000/api/article/')
-      .then(res => {
-        setArticles(res.data.msg)
-      })
-  }, [])
+    axios.get(`${API_URL}/api/article/`).then((res) => {
+      setArticles(res.data.msg);
+    });
+  }, []);
 
 
-  const allArticles = articles.map(article => {
+articles.sort((b, a) => a.views - b.views)
 
-    // console.log(article)
+  // sort array of objects (articles) by bigest views to lower.
+
+  console.log("articles ", articles);
+
+  const oneArticleViews = (articleId) => {
+    // axios
+    // .put(`http://localhost:5000/api/article/views/${articleId}`)
+    // .then((res) => {
+    //   // setOneArticleViwer('done')
+    //   console.log("done");
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
+  }
+
+  const allArticles = articles.map((article, i) => {
+    const artDateMongodb = new Date(article.createdAt);
+    let year = artDateMongodb.getFullYear();
+    let month = artDateMongodb.getMonth() + 1;
+    let dt = artDateMongodb.getDate();
+    if (dt < 10) {
+      dt = "0" + dt;
+    }
+    if (month < 10) {
+      month = "0" + month;
+    }
+    const artDate = year + "-" + month + "-" + dt;
+
     return (
       <Link
-      onClick={() =>{
-        props.oneArticleViews(article._id)
-        props.setSelectArticle(article)}
-
-    }
-      to={`/${article._id}/article`}  style={{textDecoration:'none'}}>
+        key={i}
+        onClick={() => {
+          oneArticleViews(article._id);
+        }}
+        to={`/${article._id}/article`}
+        style={{ textDecoration: "none" }}
+      >
         <div className="article-content">
-          <img
-            src={article.img}
-            alt=""
-          />
+          <img src={article.img} alt="" />
           <h1>{article.title}</h1>
-          {/* <p>{article.content}</p> */}
-          <LinesEllipsis className="content"
+          <LinesEllipsis
+            className="content"
             text={article.content}
-            maxLine='3'
-            ellipsis='....  (Read More)'
+            maxLine="3"
+            ellipsis="....  (Read More)"
             trimRight
           />
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <p style={{ fontSize: "0.7em", marginRight: "30px" }}>
+              Date: {artDate}
+            </p>
+            <p style={{ fontSize: "0.7em" }}>Views: {article.views}</p>
+          </div>
         </div>
       </Link>
-    )
-  })
+    );
+  });
 
-
+  console.log('All articles:::', allArticles)
 
   return (
     <div className="Articles">
       <Container fluid className="article-container-section">
-
         <Row>
-          <div className="article-page">
-
-            {allArticles}
-
-
-          </div>
+          <div className="article-page">{allArticles}</div>
         </Row>
       </Container>
     </div>

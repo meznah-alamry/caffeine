@@ -1,3 +1,4 @@
+import API_URL from '../apiConfig.js'
 import axios from "axios";
 import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
@@ -13,7 +14,7 @@ const validationSchema = Yup.object({
 export default function Login(props) {
   const history = useHistory();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
-
+  console.log(API_URL)
   const [login, setLogin] = useState(true); // to show alert
   // const onChangeInput = (event) => {
   //   const { name, value } = event.target;
@@ -24,9 +25,10 @@ export default function Login(props) {
   // };
 
   const onSubmit = (values) => {
+    
     // event.preventDefault();
     axios
-      .post("http://localhost:5000/api/user/login", values)
+      .post(`${API_URL}/api/user/login`, values)
       .then((res) => {
         console.log("Express backend /login response", res);
 

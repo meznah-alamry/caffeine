@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch  } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
-
+import API_URL from './apiConfig.js'
 
 import "bootstrap/dist/css/bootstrap.min.css";
 // styles
@@ -53,29 +53,9 @@ function App() {
   const [selectArtcile, setSelectArticle] = useState({});
   const [articlePage, setArticlePage] = useState(false)
   const [productPage, setProductPage] = useState(false)
-  const [oneArticleViwer, setOneArticleViwer] = useState('')
+
   const [search, setSearch] = useState("");
 
-
-  function oneArticleViews(articleId){
-
-   
-        console.log('i recived ',articleId)
-        axios.put(`http://localhost:5000/api/article//views/${articleId}`)
-        .then((res) => {
-          
-          setOneArticleViwer('done')
-
-        });
-      
-  
-
-
-  
-   console.log("search in app"  + search);
-
-
-  }
   const userLogin = () => {
     if (localStorage.jwtToken) {
       const jwtToken = localStorage.jwtToken;
@@ -101,7 +81,7 @@ function App() {
       {dataLoading && (
         <Router>
           <NavBar
-           isLoggedIn={auth.isLoggedIn}
+            isLoggedIn={auth.isLoggedIn}
             loginCallback={userLogin}
             setArticlePage={setArticlePage}
             articlePage={articlePage}
@@ -109,45 +89,55 @@ function App() {
             productPage={productPage}
             ToSetSearch={ToSetSearch}
             />
-          <Route exact path="/">
+          <Switch 
+          >
+          <Route exact  path="/">
+
             <HomePage
              setSelectArticle={setSelectArticle}
-             oneArticleViews={oneArticleViews}
              />
           </Route>
 
           <Route exact path="/login">
-            <Login loginCallback={userLogin} />
+            <Login 
+            loginCallback={userLogin} />
           </Route>
 
           <Route exact path="/signup">
-            <Signup loginCallback={userLogin} />
+            <Signup 
+            loginCallback={userLogin} />
           </Route>
 
           <Route exact path="/forgot">
 
 
 
-            <Forgot loginCallback={userLogin} />
+            <Forgot 
+            loginCallback={userLogin} />
 
 
           </Route>
 
 
           <Route exact path="/new-product">
-            <NewProduct setAuth={setAuth}
+            <NewProduct 
+            setAuth={setAuth}
               auth={auth} />
 
           </Route>
 
           <Route path="/products/:id">
-            <ShowOneProduct selectProduct={selectProduct} auth={auth} />
+            <ShowOneProduct 
+            selectProduct={selectProduct}
+             auth={auth} />
 
           </Route>
 
           <Route exact path="/products">
            
-            <Products setSelectProduct={setSelectProduct} search={search}/>
+            <Products 
+            setSelectProduct={setSelectProduct}
+             search={search}/>
           </Route>
 
           <Route exact path="/cart">
@@ -157,34 +147,36 @@ function App() {
 
           
           <Route path="/new-article">
-            <NewArticle setAuth={setAuth}
+            <NewArticle 
+            setAuth={setAuth}
               auth={auth}/>
           </Route>
 
           <Route path="/:article_id/article" >
-            <ShowOneArticle selectArtcile={selectArtcile} auth={auth}/>
+            <ShowOneArticle 
+            selectArtcile={selectArtcile} auth={auth}/>
           </Route>
 
           <Route path="/articles" >
             <Articles
-             setSelectArticle={setSelectArticle}
-             oneArticleViews={oneArticleViews}
              />
           </Route>
 
           <Route path="/admin" >
-            <Admin auth={auth}/>
-          </Route>
-
-
-
-          <Route exact path="/profile" >
-            < UserProfile setAuth = {setAuth}
+            <Admin 
             auth={auth}/>
           </Route>
 
 
 
+          <Route exact path="/profile" >
+            < UserProfile 
+            setAuth = {setAuth}
+            auth={auth}/>
+          </Route>
+
+
+          </Switch>
           <Footer />
 
 
@@ -196,4 +188,4 @@ function App() {
   );
 }
 
-export default App;
+export default  App;

@@ -1,9 +1,11 @@
+import API_URL from '../apiConfig.js'
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Alert, Button, Form } from "react-bootstrap";
 import { Formik, Form as FormikForm, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import * as Yup from 'yup';
+
 
 const validationSchema = Yup.object({
   name: Yup.string().required(" Enter your name "),
@@ -27,7 +29,7 @@ export default function Singup(props) {
     // event.preventDefault();
 
     axios
-      .post("http://localhost:5000/api/user/register", values)
+      .post(`${API_URL}/api/user/register`, values)
       .then((res) => {
         const user = res.data.user;
         if (user) {

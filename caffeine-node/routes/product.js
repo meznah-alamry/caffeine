@@ -3,7 +3,7 @@ const router = express.Router()
 const Product = require('../models/product')
 
 router.get("/products", (req, res) => {
-    Product.find()
+    Product.find().sort({updatedAt: -1}).exec()
       .then((products) => {
         res.json({ msg: products });
       })

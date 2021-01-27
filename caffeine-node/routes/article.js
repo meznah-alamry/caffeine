@@ -31,12 +31,10 @@ router.put("/views/:articleId", (req, res) => {
   .then(art=>{
     let updateViews = parseInt(art.views)+1
     console.log(art.views)
-    Article.updateOne({ _id :articleId },{ views: ` ${updateViews}`}, (err, newUser) => {
-      // console.log('number of views ', newUser)
-
+    Article.updateOne({ _id :articleId },{ views: `${updateViews}`}, (err, newUser) => {
 
 });
-  })
+  }).catch(err=>console.log(err))
  
 
 });
@@ -44,6 +42,7 @@ router.put("/views/:articleId", (req, res) => {
 router.put('/:articleId/edit', (req, res)=>{
 
   let articleId = req.params.articleId
+  
   const {title, content, img} = req.body;
   const user = req.body.id;
 console.log(req.body)

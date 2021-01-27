@@ -1,8 +1,10 @@
+import API_URL from '../apiConfig.js'
 import React from "react";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import { Container, Row } from 'react-bootstrap';
 import OneProduct from './OneProduct';
+
 
 export default function Products(props) {
 
@@ -16,7 +18,7 @@ export default function Products(props) {
 
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/product/products') 
+        axios.get(`${API_URL}/api/product/products`) 
         .then(res =>{     
             setProducts(res.data.msg)
             
@@ -24,10 +26,11 @@ export default function Products(props) {
     }, [])
 
 
-   let  allProducts = products.map(product =>{
+   let  allProducts = products.map((product,i) =>{
    
 
      return <OneProduct
+      key={i}
       product= {product}
        setSelectProduct={props.setSelectProduct}
        />
@@ -38,10 +41,12 @@ export default function Products(props) {
 
   const result = products.filter(product => product.title.toLowerCase().includes(term.toLowerCase()) );
 
-   allProducts = result.map(product =>{
+   allProducts = result.map((product,i) =>{
    
 
-    return <OneProduct product= {product} setSelectProduct={props.setSelectProduct} />
+    return <OneProduct 
+    key={i}
+    product= {product} setSelectProduct={props.setSelectProduct} />
 
  
  }) 

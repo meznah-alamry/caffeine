@@ -1,3 +1,4 @@
+import API_URL from '../apiConfig.js'
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -28,7 +29,7 @@ export default function Cart(props) {
   const userOrderCode = userId.substr(userId.length - 15);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/user/${_id}/cart`).then((res) => {
+    axios.get(`${API_URL}/api/user/${_id}/cart`).then((res) => {
       
       if(res.data.user.products == []){
         setCheckOutState(false)
@@ -42,7 +43,7 @@ export default function Cart(props) {
 
   const deleteProduct = (productId) => {
     axios
-      .delete(`http://localhost:5000/api/user/${userId}/cart/${productId}`)
+      .delete(`${API_URL}/api/user/${userId}/cart/${productId}`)
       .then((res) => {
         
         setChangeOnDelete(!changeOnDelete);
@@ -52,7 +53,7 @@ export default function Cart(props) {
   };
   const uniqueProducts = [];
 
-  alluserProducts.forEach((product) => {
+  alluserProducts.forEach((product,i) => {
     if (!uniqueProducts.includes(product)) uniqueProducts.push(product);
   });
 
@@ -74,10 +75,11 @@ export default function Cart(props) {
     return total;
   };
 
-  const cartProducts = alluserProducts.map((product) => {
+  const cartProducts = alluserProducts.map((product,i) => {
     return (
       <>
         <OneCardproduct
+          key={i}
           deleteProduct={deleteProduct}
           product={product}
           delete={true}
@@ -91,10 +93,10 @@ export default function Cart(props) {
     );
   });
 
-  const orders = alluserProducts.map((product) => {
+  const orders = alluserProducts.map((product,i) => {
     return (
       <>
-        <li>{product.oneProduct.id.title}</li>
+        <li key={i} >{product.oneProduct.id.title}</li>
       </>
     );
   });
@@ -134,7 +136,7 @@ export default function Cart(props) {
   function deleteOrder() {
     console.log('asim')
     axios
-      .delete(`http://localhost:5000/api/user/cart/delete-order/${userId}`)
+      .delete(`${API_URL}/api/user/cart/delete-order/${userId}`)
       .then((res) => {
         setChangeOnDelete(!changeOnDelete);
         setCheckOutState(false)
@@ -170,7 +172,14 @@ export default function Cart(props) {
       </div>
       {cartProducts}
 
-      <p className="total"> Total :{Total()} </p>
+      <p
+       className="total"
+       style={{
+         margin: 'auto',
+         padding: '50px 0px 200px 0px'
+       }}
+       
+       > Total : ${Total()} </p>
 
       <div
         style={{

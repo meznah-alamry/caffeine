@@ -146,6 +146,8 @@ router.put("/:userId/:productId", (req, res) => {
 });
 
 
+
+
 router.get('/:userId/cart' , (req,res)=>{
   const userId = req.params.userId
   
@@ -157,10 +159,6 @@ router.get('/:userId/cart' , (req,res)=>{
     })
 
   })
-
-  
-
-
 
 
 router.delete('/:userId/cart/:productId' , (req,res)=>{
@@ -193,5 +191,20 @@ router.delete('/cart/delete-order/:userId' , (req,res)=>{
 
 
 })
+
+
+router.put('/profile/info/:userId', (req, res) => {
+  const newImg = req.body.img;
+  const userId = req.params.userId
+
+    User.updateOne({ _id :userId },{ img: ` ${newImg}`}, (err, newUser) => {
+
+});
+    
+  })
+
+
+
+
 
 module.exports = router;

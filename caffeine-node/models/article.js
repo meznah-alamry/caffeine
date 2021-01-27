@@ -12,7 +12,7 @@ const articleSchema = new mongoose.Schema({
     } , 
     img : {
         type :String , 
-        required :true
+        default: 'https://www.visitdubai.com/sc7/-/media/images/articles/cafe-society-specialty-coffee/updated-03-2019/in-article-desktop-slider-the-sum-of-us.jpg'
     },
 
     user: {type: mongoose.Schema.Types.ObjectId, ref: 'user'},

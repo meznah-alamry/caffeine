@@ -1,3 +1,4 @@
+import API_URL from '../apiConfig.js'
 import React from 'react'
 import { Button, Card, Col, Row, Form } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
@@ -40,7 +41,9 @@ export default function OneCardProduct(props) {
                              <p className="ex1">{product.id.title}</p>
                              </Link> </div>
                         
-                        <div className="price">  SAR{product.id.price}   </div>
+                        <div
+                        className="price"
+                        >  ${product.id.price}   </div>
 
                         <Form.Group controlId="exampleForm.ControlInput1" 
                         style={{display: 'flex'}}>

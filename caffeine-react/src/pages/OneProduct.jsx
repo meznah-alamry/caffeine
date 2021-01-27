@@ -1,6 +1,8 @@
+import API_URL from '../apiConfig.js'
 import React from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
 
 export default function OneProduct(props) {
   return (
@@ -27,7 +29,7 @@ export default function OneProduct(props) {
               <Card.Text>
                 {props.product.state}
                 <br />
-                <h5 style={{color: 'green'}}className="mt-2 text-center">$ {props.product.price} </h5>
+                <span style={{color: 'green'}}className="mt-2 text-center">$ {props.product.price} </span>
               </Card.Text>
               <Row>
                 <Col className="btn-more-info-space">

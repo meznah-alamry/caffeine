@@ -1,8 +1,11 @@
+import API_URL from '../apiConfig.js'
+
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Button, Col, Container, Row, Form } from "react-bootstrap";
+
 
 export default function ShowOneProduct(props) {
   const { id } = useParams();
@@ -15,7 +18,7 @@ export default function ShowOneProduct(props) {
   console.log(product)
   useEffect(() => {
     if (!title) {
-      axios.get("http://localhost:5000/api/product/products").then((res) => {
+      axios.get(`${API_URL}/api/product/products`).then((res) => {
         let product = res.data.find((ele) => ele._id == id);
         setSelectProduct(product);
       });
@@ -28,7 +31,7 @@ export default function ShowOneProduct(props) {
 
   const addProductToCart = () => {
     axios
-      .put(`http://localhost:5000/api/user/${userId}/${selectProduct._id}`,product )
+      .put(`${API_URL}/api/user/${userId}/${selectProduct._id}`,product )
       .then((res) => {
         console.log(res.data.msg);
       });
@@ -38,7 +41,7 @@ export default function ShowOneProduct(props) {
 
     const qtyNumberDropDown = [...Array(numbersOfQty)].map((e,i)=>{
       return (
-      <option>{i+1}</option>
+      <option key={i}>{i+1}</option>
       )
 
     })

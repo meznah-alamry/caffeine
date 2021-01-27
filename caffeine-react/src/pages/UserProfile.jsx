@@ -1,25 +1,32 @@
+import API_URL from '../apiConfig.js'
 import React from "react";
 import axios from "axios";
-import  {useState}  from 'react';
+
+import  {useState ,useEffect }  from 'react';
 export default function UserProfile(props) {
-    
     const { name, email, _id } = props.auth.currentUser;
-   
+    const [updateProfile , setUpdateProfile] = useState({})
     const uploadImageHundler = (e) => {
         var format = new FormData()
         format.append("image", e.target.files[0])
-        axios.post("https://api.imgur.com/3/image/", format, { headers: { "Authorization": "Client-ID {id}" } })
-          .then(data => console.log(data.data.data.link))
-          .catch(err => console.log(err))
+        axios.post("https://api.imgur.com/3/image/", format, { headers: { "Authorization": "Client-ID 6cd46bc903efe25" } })
+          .then(data =>{
+
+            const img={img: data.data.data.link}
+            axios.put(`${API_URL}/api/user/profile/info/${_id}`,img)
+            .then((res) => {
+            
+              // setOneArticleViwer('done')
+              console.log('done')
+        
+            }).catch(err=>{console.log(err)})
+        
+           
+        })
       } 
+      
+      
 
-
-      // useEffect(() => {
-      //   axios.get('http://localhost:5000/api/profile/')
-      //     .then(res => {
-      //       setArticles(res.data.msg.user)
-      //     })
-      // }, [])
     
    
     return (
@@ -32,7 +39,12 @@ export default function UserProfile(props) {
           <div className="form-group">
               <label>Image:  </label>
         
-              &nbsp;  <input type="file"></input>
+              &nbsp;  <input
+               type="file"
+                name="image"
+                 placeholder="image"
+                 onChange={uploadImageHundler}
+                 ></input>
           </div>
 
 

@@ -1,3 +1,4 @@
+import API_URL from '../apiConfig.js'
 import React from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import axios from "axios";
@@ -9,7 +10,6 @@ import * as Yup from 'yup';
 const validationSchema = Yup.object({
   title: Yup.string().required(" This field is required "),
   description: Yup.string().required(" This field is required "),
-  img: Yup.string().required(" Product Image is required "),
   price: Yup.string().required("Product price is required "),
   state: Yup.string().required("You must choose one "),
   qty: Yup.string().required("Quantity is required at least one"),
@@ -17,18 +17,14 @@ const validationSchema = Yup.object({
 
 export default function NewProduct(props) {
 
-  // const [product, setProduct] = useState({}); // product info
   const history = useHistory();
+  const [updateProductImg , setUpdateProductImg] = useState("")
 
-  // const onChangeInput = ({ target: { name, value } }) =>{
-  //      setProduct({ ...product, [name]: value });
 
-  // }
 
   const onSubmit = (values) => {
-    // event.preventDefault();
-    // console.log('product info after submit', product)
-
+    
+    values.img= updateProductImg
     axios
       .post("http://localhost:5000/api/product/new-product", values)
       .then((res) => {
@@ -46,17 +42,29 @@ export default function NewProduct(props) {
 
   const qtyNumberDropDown = [...Array(numbersOfQty)].map((e, i) => {
     return (
-      <option>{i + 1}</option>
+      <option key={i}>{i + 1}</option>
     )
 
   })
+
+  const uploadImageHundler = (e) => {
+    var format = new FormData()
+    format.append("image", e.target.files[0])
+    axios.post("https://api.imgur.com/3/image/", format, { headers: { "Authorization": "Client-ID 6cd46bc903efe25" } })
+      .then(data =>{
+
+        
+        setUpdateProductImg(data.data.data.link)
+       
+    })
+  } 
   if (props.auth.isLoggedIn) {
 
     return (
       <div className="NewProduct">
 
         <Formik
-          initialValues={{title: "", description: "", img: "", price: "", state: "", qty: ""}}
+          initialValues={{title: "", description: "", img: updateProductImg, price: "", state: "", qty: ""}}
           validationSchema={validationSchema}
           onSubmit={values => onSubmit(values)}
         >
@@ -84,7 +92,8 @@ export default function NewProduct(props) {
               <Form.Label>
                 <b>Image</b>
               </Form.Label>
-              <Form.Control as={Field} type="text" placeholder="http://" name="img" />
+              <br/>
+              <input type="file"  onChange={uploadImageHundler} name="img"   />
             </Form.Group>
             <ErrorMessage name="img" render={(msg) =>  <Alert variant={"danger"}>
                     {msg}

@@ -1,9 +1,11 @@
+import API_URL from '../apiConfig.js'
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from 'axios'
 import { Button, Modal } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
+
 
 
 export default function ShowOneArticle(props) {
@@ -36,20 +38,36 @@ export default function ShowOneArticle(props) {
     const artDate = year+'-' + month + '-'+dt;
     useEffect(() => {
         if (!title) {
-            axios.get('http://localhost:5000/api/article/')
+            axios.get(`${API_URL}/api/article/`)
                 .then(res => {
                     let article = res.data.msg.find(ele => ele._id == article_id)
                     setSelectArticle(article)
                     //data.msg[0]._id
                     console.log(res.data)
+                    oneArticleViews(article_id)
                 })
+
+
+            
         }
 
     }, [])
 
+    const oneArticleViews = (articleId) => {
+        axios
+        .put(`http://localhost:5000/api/article/views/${articleId}`)
+        .then((res) => {
+          // setOneArticleViwer('done')
+          console.log("done");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }
+
     const deleteArticle = (articleId) => {
 
-        axios.delete(`http://localhost:5000/api/article/${articleId}`)
+        axios.delete(`${API_URL}/api/article/${articleId}`)
             .then(data => {
 
                 history.push('/articles')
@@ -70,7 +88,7 @@ export default function ShowOneArticle(props) {
     const editArticle = (articleId) => {
         
         console.log(selectArtcile)
-        axios.put(`http://localhost:5000/api/article/${articleId}/edit`, {...updateArticle, id: props.auth.currentUser._id })
+        axios.put(`${API_URL}/api/article/${articleId}/edit`, {...updateArticle, id: props.auth.currentUser._id })
             .then(data => {
 
                 history.push('/articles')
@@ -79,11 +97,22 @@ export default function ShowOneArticle(props) {
 
     return (
         <>
-
-              <div className="ShowOneArticle" style={{width:'50%', height:'500px', margin:'0 auto'}}>
+             {selectArtcile.user?
+              <div className="ShowOneArticle" style={{width:'50%', height:'500px', margin:'0 auto '}}>
                <h1>{title}</h1>
-               <p>created at {artDate}  views: {selectArtcile.views}</p>
-
+               <div
+               style={{display: 'flex'}}
+               >
+               <p 
+               style={{margin: '10px'}}
+               >created at {artDate}</p>
+               <p
+               style={{margin: '10px'}}
+               >by: {selectArtcile.user.name} </p>
+               <p
+               style={{margin: '10px'}}
+               >views: {selectArtcile.views}</p>
+               </div>
                <hr/>
             <img style={{height:'500px', width:'100%'}}
                 src={img}
@@ -99,7 +128,10 @@ export default function ShowOneArticle(props) {
                     {props.auth.currentUser._id === selectArtcile.user._id ? <>
 
                        
-                      <Button className="float-right" variant="outline-warning" onClick={handleShow}>Delete</Button>
+                      <Button className="float-right" 
+                      
+                      style={{marginBottom: '400px'}}
+                      variant="outline-warning" onClick={handleShow}>Delete</Button>
                         <Button className="mr-5 float-right" variant="outline-info" onClick={handleShowEdit}>EDit</Button>
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
@@ -140,6 +172,7 @@ export default function ShowOneArticle(props) {
                         </>} </> : <></>}
 
             </div>
+           :<></>}
         </>
     )
 }

@@ -1,3 +1,4 @@
+import API_URL from '../apiConfig.js'
 import React from 'react'
 import { Navbar, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -55,8 +56,7 @@ export default function NavBar(props) {
          }}
            >
              Articles</Nav.Link>
-             <input type="text" name="search" placeholder="Search"  onChange={event =>{props.ToSetSearch(event.target.value)
-          }}></input>
+             
 
         </Nav>
 
@@ -76,10 +76,11 @@ export default function NavBar(props) {
         
           {props.articlePage?
           <>
-
+            
           <Nav.Link
           as={Link}
           to="/new-article"
+          style={{margin: 'auto 30px auto auto'}}
            >
           Add New Article
           </Nav.Link>
@@ -96,9 +97,14 @@ export default function NavBar(props) {
 
          {props.productPage?
            <>
+           <input
+           style={{margin: 'auto 30px auto auto' , height: '30px'}}
+           type="text" name="search" placeholder="Search"  onChange={event =>{props.ToSetSearch(event.target.value)
+            }}></input>
           <Nav.Link
            as={Link}
             to='/new-product'
+            style={{margin: 'auto 30px auto auto'}}
             > Add New Product </Nav.Link>
             </>
            : <></>}
@@ -112,11 +118,13 @@ export default function NavBar(props) {
                       props.setProductPage(false)
                       props.setArticlePage(false)
                }}
-               >  <ShoppingCartIcon style={{ marginTop: "6px", marginRight: "15px", fontSize: "25px", color: "#7d8179" }} /> </Nav.Link>
+               >  <ShoppingCartIcon
+                style={{ margin: "auto 50px auto auto", fontSize: "25px", color: "#7d8179" }} /> </Nav.Link>
 
              
 
               <Button variant="dark"
+              style={{margin: 'auto 10px auto auto', height: '100%'}}
                 onClick={() => {
                   console.log("Logging Out!");
                   localStorage.removeItem("jwtToken");

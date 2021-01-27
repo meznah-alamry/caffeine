@@ -37,7 +37,7 @@
     max-height: 250px;
 }
 .Articles .article-content h1{
-     font-size: 1.1vw;
+     font-size: 1vw;
      margin-top: 10px;
 }
 
@@ -48,4 +48,5 @@
     color:rgb(92, 92, 92);
     overflow: hidden;
     text-overflow: ellipsis;
+    min-height: 50px;
 }

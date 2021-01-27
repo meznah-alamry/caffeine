@@ -13,15 +13,51 @@ export default function NavBar(props) {
     <div className="NavBar">
       <Navbar className="navbar" variant="dark">
 
-        <Navbar.Brand as={Link} to="/">Caffeine</Navbar.Brand>
+        <Navbar.Brand 
+        as={Link}
+         to="/"
+         onClick={
+          ()=>{
+              props.setProductPage(false)
+              props.setArticlePage(false)
+       }}
+        >Caffeine</Navbar.Brand>
 
         <Nav className="mr-auto">
-          <Nav.Link as={Link} to="/">Home</Nav.Link>
-          <Nav.Link as={Link} to="/products">Products</Nav.Link>
-          <Nav.Link as={Link} to="/articles">Articles</Nav.Link>
-         
-          <input type="text" name="search" placeholder="Search"  onChange={event =>{props.ToSetSearch(event.target.value)
+
+          <Nav.Link
+           as={Link}
+           to="/"
+           onClick={
+            ()=>{
+                props.setProductPage(false)
+                props.setArticlePage(false)
+         }}
+          >Home</Nav.Link>
+
+          <Nav.Link
+           as={Link}
+           to="/products"
+           onClick={
+             ()=>{
+                props.setProductPage(true)
+                 props.setArticlePage(false)
+          }}
+           >Products</Nav.Link>
+
+          <Nav.Link
+           as={Link}
+           to="/articles"
+           onClick={
+            ()=>{
+               props.setProductPage(false)
+                props.setArticlePage(true)
+         }}
+           >
+             Articles</Nav.Link>
+             <input type="text" name="search" placeholder="Search"  onChange={event =>{props.ToSetSearch(event.target.value)
           }}></input>
+
         </Nav>
 
         <Nav style={{ float: "right" }}>
@@ -33,16 +69,50 @@ export default function NavBar(props) {
             <Nav.Link as={Link} to="/signup">
               Signup
           </Nav.Link>
+         
+          </> : <>
 
 
+        
+          {props.articlePage?
+          <>
 
-          </> : <> <Nav.Link as={Link} to="/new-article">
-            Add Article
+          <Nav.Link
+          as={Link}
+          to="/new-article"
+           >
+          Add New Article
           </Nav.Link>
+          
+          </> 
+          
+          
+          :<></> 
+        
+        }
+          
+          
 
-              <Nav.Link as={Link} to='/new-product'> Add New Product </Nav.Link>
 
-              <Nav.Link as={Link} to='/cart'>  <ShoppingCartIcon style={{ marginTop: "6px", marginRight: "15px", fontSize: "25px", color: "#7d8179" }} /> </Nav.Link>
+         {props.productPage?
+           <>
+          <Nav.Link
+           as={Link}
+            to='/new-product'
+            > Add New Product </Nav.Link>
+            </>
+           : <></>}
+
+
+              <Nav.Link
+               as={Link}
+                to='/cart'
+                onClick={
+                  ()=>{
+                      props.setProductPage(false)
+                      props.setArticlePage(false)
+               }}
+               >  <ShoppingCartIcon style={{ marginTop: "6px", marginRight: "15px", fontSize: "25px", color: "#7d8179" }} /> </Nav.Link>
 
              
 

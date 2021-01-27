@@ -1,8 +1,16 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
 body{
     font-family: Georgia, 'Times New Roman', Times, serif; 
-    color:rgb(92, 92, 92)
-
+    color:rgb(92, 92, 92);
+    
 }
+
+
 
 .Home{
     /*https://images.wallpaperscraft.com/image/cup_coffee_hands_192936_1920x1080.jpg
@@ -13,9 +21,59 @@ body{
     */
 
    }
+
+
+
+.Home .art{
+    box-shadow: 0px 0px 10px #888888;
+    padding: 5px;
+    max-width: 400px;
+    min-width: 400px;
+    min-height: 250px;
+    max-height: 250px;
+    flex-grow: 1;
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Home .art:hover{
+    border: 2px solid red
+
+}
 .Home .header-img{
     width: 100%;
+    height: 600px;
+    background-image: url("https://i.imgur.com/STVyYtG.jpg");
+    background-size: cover;
+    position: relative;
+
 }
+.Home .img-artcile-shadow{
+    width: 100%;
+    height: 60%;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgb(0, 0, 0));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.Home .header-img .img-shadow{
+width: 100%;
+height: 60%;
+background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.842));
+position: absolute;
+bottom: 0;
+
+}
+
+.Home .header-img h1{
+    color:white;
+    margin: 30px;
+    position: absolute;
+    bottom: 0;
+    }
 .Home .article-header{
 width: 100%;
 border-left: 4px solid rgb(92, 92, 92);
@@ -37,6 +95,9 @@ margin-top: 20px;
     width: 100%;
     margin-top: 20px;
     display: flex;
+    margin-bottom: 100px;
+    justify-content: start;
+    overflow: hidden;
 }
 
 .Home .article-page{
@@ -44,7 +105,7 @@ margin-top: 20px;
    
 }
 
-.Home .art1{
+.Home .art{
     margin-right: 15px;
     flex-grow: 1;
     flex-shrink: 1;
@@ -54,37 +115,32 @@ margin-top: 20px;
     margin-right: 0px;
 } */
 
-.Home .article-section img{
-    width: 100%;
-    max-width: 500px;
-    min-height: 250px;
-    max-height: 250px;
-}
+
 .Home .article-section h1{
      font-size: 1.1vw;
      margin-top: 10px;
-     color: black;
-}
+     color: white;
+     max-width: 90%;
+     overflow: hidden;
+     
 
-.Home .article-section .content{
-    font-size: 0.7vw;
-    max-width: 500px;
+    }
+
+.Home .article-section .art-title{
+    font-size: 1.3em;
+    max-width: 90%;
     text-align: justify;
-    color:rgb(92, 92, 92);
+    color:white;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.418);
+    display: inline-block;
+    padding: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 }
 
-.Home .art2{
-    width: 100%;
-    max-width: 500px;
-    margin-right: 100px;
-    margin-bottom: 40px;
-    
-}
-.Home .art3{
-    flex-shrink: 1;
-    margin-right: 10px;
-    flex-grow: 1;
-}
+
 .Home .container-section-ov {
     min-width: 80%;
     max-width: 80%;
@@ -122,3 +178,4 @@ margin-top: 20px;
 .Home.text-art p{
  margin: 20px;
 }
+

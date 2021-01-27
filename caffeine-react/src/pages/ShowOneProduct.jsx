@@ -9,6 +9,7 @@ export default function ShowOneProduct(props) {
   const [product, setProduct] = useState({});
   const [selectProduct, setSelectProduct] = useState(props.selectProduct);
 
+ 
   const { title, img, description, price, state, qty } = selectProduct;
   const userId = props.auth.currentUser._id;
   console.log(product)
@@ -52,7 +53,11 @@ export default function ShowOneProduct(props) {
           <Col md="6">
             <h1>{title}</h1>
             <p> {description}</p>
-            <h3>{price}</h3>
+            <h3
+             style={{color: 'green'}}
+
+             >${price}
+             </h3>
             {qty ? (
               <h5 style={{ color: "green" }}>In Stock</h5>
               ) : (

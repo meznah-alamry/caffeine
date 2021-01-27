@@ -18,7 +18,7 @@ export default function Products(props) {
     useEffect(() => {
         axios.get('http://localhost:5000/api/product/products') 
         .then(res =>{     
-            setProducts(res.data.msg) 
+            setProducts(res.data.msg)
             
         })
     }, [])
@@ -27,9 +27,10 @@ export default function Products(props) {
    let  allProducts = products.map(product =>{
    
 
-      return <OneProduct product= {product} setSelectProduct={props.setSelectProduct} />
-
-   
+     return <OneProduct
+      product= {product}
+       setSelectProduct={props.setSelectProduct}
+       />
    }) 
  
 
@@ -54,15 +55,14 @@ export default function Products(props) {
 
      
       <div>
-            <Container >
-                <h1 className="mt-5" style={{ textAlign: "center" }}>All products</h1>
-               
-                {/* Products Cards */}
-                <Row className="justify-content-md-center">
+            
+            <Container className="Products">
+                
 
-               {allProducts}
-               
-               
+                {/* Products Cards */}
+                <Row className="justify-content-md-center" style={{margin: '10px'}}>
+                   
+                    {allProducts}
                     
                 </Row>
 

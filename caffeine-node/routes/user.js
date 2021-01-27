@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+
 router.get("/", (req, res) => {
   User.find()
     .then((users) => {
@@ -45,7 +46,7 @@ router.post("/register", (req, res) => {
 
 router.post("/login", async (req, res) => {
   let { email, password } = req.body;
-  
+ 
   email = email.toLowerCase();
   const user = await User.findOne({ email: email }); // its same to =>  User.findOne({email:email}).then(user => { })
 
@@ -185,7 +186,7 @@ router.delete('/cart/delete-order/:userId' , (req,res)=>{
   
   User.findOneAndUpdate({_id: userId},{$set: { products: [] }})
   .then(user =>{
-
+    
           res.json({msg : "Your Orders Has Been Deleted!"})
 
   })

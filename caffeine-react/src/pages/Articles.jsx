@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import LinesEllipsis from 'react-lines-ellipsis'
 
-export default function Home(props) {
+export default function Articles(props) {
   const [articles, setArticles] = useState([])
 
   useEffect(() => {
@@ -18,9 +18,15 @@ export default function Home(props) {
 
   const allArticles = articles.map(article => {
 
-    console.log(article)
+    // console.log(article)
     return (
-      <Link to={`/${article._id}/article`} onClick={() => props.setSelectArticle(article)} style={{textDecoration:'none'}}>
+      <Link
+      onClick={() =>{
+        props.oneArticleViews(article._id)
+        props.setSelectArticle(article)}
+
+    }
+      to={`/${article._id}/article`}  style={{textDecoration:'none'}}>
         <div className="article-content">
           <img
             src={article.img}

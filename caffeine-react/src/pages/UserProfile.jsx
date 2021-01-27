@@ -14,12 +14,12 @@ export default function UserProfile(props) {
       } 
 
 
-      useEffect(() => {
-        axios.get('http://localhost:5000/api/profile/')
-          .then(res => {
-            setArticles(res.data.msg.user)
-          })
-      }, [])
+      // useEffect(() => {
+      //   axios.get('http://localhost:5000/api/profile/')
+      //     .then(res => {
+      //       setArticles(res.data.msg.user)
+      //     })
+      // }, [])
     
    
     return (

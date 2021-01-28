@@ -15,7 +15,9 @@ const userSchema = new mongoose.Schema({
         required :true
     },
     img : {
-        type :String 
+        type :String ,
+        default: "http://romanroadtrust.co.uk/wp-content/uploads/2018/01/profile-icon-png-898-300x300.png"
+        
        
     },
     isAdmin: {

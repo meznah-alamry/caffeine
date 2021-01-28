@@ -41,7 +41,7 @@ export default function Admin(props) {
         const isAdmin = user.isAdmin
         console.log(isAdmin)
         if(e==false&&isAdmin==true || e==true&&isAdmin==false){
-            axios.put(`http://localhost:5000/api/admin/${user._id}`, {isAdmin: isAdmin})
+            axios.put(`${API_URL}/api/admin/${user._id}`, {isAdmin: isAdmin})
             .then(res=>{
                 console.log(res)
             })

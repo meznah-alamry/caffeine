@@ -13,32 +13,31 @@ export default function ShowOneProduct(props) {
   const [selectProduct, setSelectProduct] = useState(props.selectProduct);
 
   const { title, img, description, price, state, qty } = selectProduct;
-  const userId = props.auth.currentUser._id;
+  const userId = props.auth.currentUser;
   console.log(id)
   
   useEffect(() => {
-<<<<<<< HEAD
     if (!title) {
-      axios.get(`${API_URL}/api/product/products`).then((res) => {
-        let product = res.data.find((ele) => ele._id == id);
-=======
-
-      axios.get(`http://localhost:5000/api/product/products/?=${id}`)
+      axios.get(`${API_URL}/api/product/products/?=${id}`)
       .then(res => {
         console.log(res.data.msg)
         let product = res.data.msg.find((ele) => ele._id == id);
->>>>>>> origin/Meznah
         setSelectProduct(product);
       })
+    }
+      
   }, []);
 
   const onChangeInput = ({ target: { name, value } }) => {
     setProduct({ ...product, [name]: value });
   };
 
+     
+ 
   const addProductToCart = () => {
+
     axios
-      .put(`${API_URL}/api/user/${userId}/${selectProduct._id}`,product )
+      .put(`${API_URL}/api/user/${userId._id}/${selectProduct._id}`,product )
       .then((res) => {
         console.log(res.data.msg);
       });
@@ -56,7 +55,7 @@ export default function ShowOneProduct(props) {
   return (
     <div>
       <Container className="mt-5 ShowOneProduct">
-        <Row>
+        <Row style={{marginBottom: "500px"}}>
           <Col md="6">
             <img width="100%" src={img} alt="" srcset="" />
           </Col>
@@ -77,6 +76,7 @@ export default function ShowOneProduct(props) {
                <h6>{state}</h6>        
              ) : (<></>)
               }
+            {props.auth.isLoggedIn?<>
             <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>
                 <b>Quantity</b>
@@ -92,7 +92,7 @@ export default function ShowOneProduct(props) {
                 {qtyNumberDropDown}
               </Form.Control>
             </Form.Group>
-            <Link to="/cart">
+            <Link to="/products">
               <Button
                 onClick={() => addProductToCart()}
                 variant="secondary"
@@ -102,6 +102,7 @@ export default function ShowOneProduct(props) {
                 Add to cart{" "}
               </Button>
             </Link>
+            </> :<></>}
           </Col>
         </Row>
       </Container>

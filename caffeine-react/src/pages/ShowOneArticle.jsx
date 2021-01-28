@@ -57,7 +57,7 @@ export default function ShowOneArticle(props) {
 
     const oneArticleViews = (articleId) => {
         axios
-        .put(`http://localhost:5000/api/article/views/${articleId}`)
+        .put(`${API_URL}/api/article/views/${articleId}`)
         .then((res) => {
           // setOneArticleViwer('done')
           console.log("done");
@@ -100,9 +100,8 @@ export default function ShowOneArticle(props) {
     return (
         <>
              {selectArtcile.user?
-              <div className="ShowOneArticle" style={{width:'50%', height:'500px', margin:'0 auto '}}>
+              <div className="ShowOneArticle" style={{width:'50%', height:'500px', margin:'0 auto 700px auto'}}>
                <h1>{title}</h1>
-<<<<<<< HEAD
                <div
                style={{display: 'flex'}}
                >
@@ -116,10 +115,8 @@ export default function ShowOneArticle(props) {
                style={{margin: '10px'}}
                >views: {selectArtcile.views}</p>
                </div>
-=======
                <p><DateRangeIcon /> {artDate}   <VisibilityOutlinedIcon /> {selectArtcile.views}</p>
 
->>>>>>> origin/Meznah
                <hr/>
             <img style={{height:'500px', width:'100%'}}
                 src={img}
@@ -135,16 +132,10 @@ export default function ShowOneArticle(props) {
                     {props.auth.currentUser._id === selectArtcile.user._id ? <>
 
                        
-<<<<<<< HEAD
-                      <Button className="float-right" 
-                      
-                      style={{marginBottom: '400px'}}
-                      variant="outline-warning" onClick={handleShow}>Delete</Button>
-                        <Button className="mr-5 float-right" variant="outline-info" onClick={handleShowEdit}>EDit</Button>
-=======
-                      <Button className="float-right" variant="outline-warning" onClick={handleShow}>Delete</Button>
+                      <Button
+                        style={{marginBottom: '400px'}}
+                      className="float-right" variant="outline-warning" onClick={handleShow}>Delete</Button>
                         <CreateOutlinedIcon style={{fontSize: "25px", color: "#7d8179", cursor:"pointer",  fontSize:"40px"}} className="mr-5 float-right" variant="outline-info" onClick={handleShowEdit}/>  
->>>>>>> origin/Meznah
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
                                 <Modal.Title>Confirm Delete</Modal.Title>

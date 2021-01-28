@@ -64,24 +64,18 @@ export default function Cart(props) {
   //   })
   //   return sum
   // }
-
+  
   const Total = (product) => {
     let total = 0;
-
     alluserProducts.forEach((product) => {
-      total = total + parseInt(product.oneProduct.id.price);
+      total = total +(parseInt(product.oneProduct.id.price)*parseInt(product.oneProduct.qty));
+
       console.log("product", product);
     });
     return total;
   };
 
-<<<<<<< HEAD
   const cartProducts = alluserProducts.map((product,i) => {
-=======
-  // console.log("from cart page",alluserProducts.length)
-
-  const cartProducts = alluserProducts.map((product) => {
->>>>>>> origin/Meznah
     return (
       <>
         <OneCardproduct

@@ -26,7 +26,7 @@ export default function NewProduct(props) {
     
     values.img= updateProductImg
     axios
-      .post("http://localhost:5000/api/product/new-product", values)
+      .post(`${API_URL}/api/product/new-product`, values)
       .then((res) => {
 
         history.push("/products");

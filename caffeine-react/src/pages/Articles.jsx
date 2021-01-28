@@ -5,6 +5,10 @@ import { Container, Row, Col, Card, Image } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import LinesEllipsis from "react-lines-ellipsis";
+import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
+import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
+import DateRangeIcon from '@material-ui/icons/DateRange';
+
 
 export default function Articles(props) {
   const [articles, setArticles] = useState([]);
@@ -53,9 +57,11 @@ articles.sort((b, a) => a.views - b.views)
           oneArticleViews(article._id);
         }}
         to={`/${article._id}/article`}
-        style={{ textDecoration: "none" }}
+        style={{ textDecoration: "none"}}
       >
-        <div className="article-content">
+        <div 
+        style={{ color: "black"}}
+        className="article-content">
           <img src={article.img} alt="" />
           <h1>{article.title}</h1>
           <LinesEllipsis
@@ -65,11 +71,12 @@ articles.sort((b, a) => a.views - b.views)
             ellipsis="....  (Read More)"
             trimRight
           />
+          <br/>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <p style={{ fontSize: "0.7em", marginRight: "30px" }}>
-              Date: {artDate}
+            <DateRangeIcon /> {artDate}
             </p>
-            <p style={{ fontSize: "0.7em" }}>Views: {article.views}</p>
+            <p style={{ fontSize: "0.7em" }}><VisibilityOutlinedIcon /> {article.views}</p>
           </div>
         </div>
       </Link>

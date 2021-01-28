@@ -69,7 +69,18 @@ export default function Home(props) {
                backgroundColor: 'rgba(0, 0, 0, 0.418)',padding: '15px'
              }}>Welcome to caffeine for coffee lovers
 
-</h1>
+           </h1>
+            <p style={{
+
+              position: 'absolute',
+              bottom: '30px',
+              color: 'white',
+              backgroundColor: 'rgba(0, 0, 0, 0.418)',
+              maxWidth: '90%',
+              marginLeft: '40px'
+            }}>Caffeine enables users to buy and sell coffee products. Not only that but also enables
+           them to share articles and read other users articles
+           </p>
             </div>
         </Row>
         <Row>
@@ -86,7 +97,24 @@ export default function Home(props) {
           </div>
         </Row>
 
-    
+
+        <Row>
+          <div className="article-section">
+
+
+
+          </div>
+        </Row> 
+
+
+        <Row>
+          <div >
+
+           
+
+          
+          </div>
+        </Row>
       </Container>
     </div>
   );

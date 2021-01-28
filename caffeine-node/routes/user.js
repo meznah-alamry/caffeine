@@ -6,6 +6,13 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+router.get("/users", (req, res) => {
+  User.find()
+    .then((users) => {
+      res.json({ msg: users });
+    })
+    .catch((err) => res.json({ msg: err }));
+});
 
 router.get("/", (req, res) => {
   User.find()
@@ -20,6 +27,7 @@ router.post("/register", (req, res) => {
     email: req.body.email,
     password: req.body.password,
     name: req.body.name,
+    
   };
 
   newUser.email = newUser.email.toLowerCase();

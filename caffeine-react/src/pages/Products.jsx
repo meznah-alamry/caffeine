@@ -65,7 +65,11 @@ export default function Products(props) {
                 
 
                 {/* Products Cards */}
-                <Row className="justify-content-md-center" style={{margin: '10px'}}>
+                <Row
+                
+                className="justify-content-md-center" 
+                
+                style={{margin: '10px 10px 400px 10px'}}>
                    
                     {allProducts}
                     

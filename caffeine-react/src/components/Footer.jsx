@@ -22,22 +22,23 @@ export default function Footer() {
           <p>This site created by © Horizon Team  2021-1 </p>
           <p>Members:</p>
           <ul>
+
+            <li>
+            <h6>Meznah Alamry</h6>
+              <a href="#">Linked In</a><br/>
+              <a href="https://git.generalassemb.ly/meznah" target="_blank">Github</a><br/>
+              </li>
+
+              <li>
+              <h6>Tala Alghamdi</h6>
+              <a href="https://www.linkedin.com/in/tala-alghamdi" target="_blank">Linked In</a><br/>
+              <a href="https://git.generalassemb.ly/talamajed" target="_blank">Github</a><br/>
+            </li>
+
             <li>
               <h6>Asim Sami</h6>
               <a href="https://www.linkedin.com/in/asim-sami-software-engineer/" target="_blank">Linked In</a><br/>
               <a href="https://git.generalassemb.ly/asim-sami" target="_blank">Github</a><br/>
-            </li>
-
-            <li>
-              <h6>Name2</h6>
-              <a href="#">Linked In</a><br/>
-              <a href="#">Github</a><br/>
-            </li>
-
-            <li>
-              <h6>Meznah Alamry</h6>
-              <a href="#">Linked In</a><br/>
-              <a href="https://git.generalassemb.ly/meznah">Github</a><br/>
             </li>
 
           </ul>

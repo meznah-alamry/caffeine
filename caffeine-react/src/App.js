@@ -53,7 +53,7 @@ function App() {
   const [selectArtcile, setSelectArticle] = useState({});
   const [articlePage, setArticlePage] = useState(false)
   const [productPage, setProductPage] = useState(false)
-
+  const[productLenght, SetProductLenght] = useState(0)
   const [search, setSearch] = useState("");
 
   const userLogin = () => {

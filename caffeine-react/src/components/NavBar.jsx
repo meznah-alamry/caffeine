@@ -120,10 +120,14 @@ console.log("from navbar", props.productLenght)
                }}
                > <span style={{color:'#d1290a'}}>{props.productLenght}</span><ShoppingCartIcon style={{ marginTop: "6px", marginRight: "15px", fontSize: "25px", color: "#7d8179" }}/>  </Nav.Link>
 
-             
+           <Nav.Link
+           as={Link}
+            to='/profile'
+            style={{margin: 'auto 30px auto auto'}}
+            > Profile </Nav.Link>
 
               <Button variant="dark"
-              style={{margin: 'auto 10px auto auto', height: '100%'}}
+              style={{margin: 'auto 10px auto 10px', height: '100%'}}
                 onClick={() => {
                   console.log("Logging Out!");
                   localStorage.removeItem("jwtToken");

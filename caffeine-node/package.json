@@ -1,7 +1,6 @@
 {
   "name": "caffeine-node",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "dependencies": {
     "bcrypt": "^5.0.0",
@@ -12,12 +11,12 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.13"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": ""
 }

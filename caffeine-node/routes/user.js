@@ -15,11 +15,21 @@ router.get("/", (req, res) => {
     .catch((err) => res.json({ msg: err }));
 });
 
+router.get("/users", (req, res) => {
+  User.find()
+    .then((users) => {
+      res.json({ msg: users });
+    })
+    .catch((err) => res.json({ msg: err }));
+});
+
+
 router.post("/register", (req, res) => {
   const newUser = {
     email: req.body.email,
     password: req.body.password,
     name: req.body.name,
+    img : "http://romanroadtrust.co.uk/wp-content/uploads/2018/01/profile-icon-png-898-300x300.png"
   };
 
   newUser.email = newUser.email.toLowerCase();

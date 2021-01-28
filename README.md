@@ -83,6 +83,36 @@ ToDo List d04:
   * Create API Routes For Cart Page. ( Asim )
   * Create API Routes For New & Articles Page. ( Meznah )
 
+ToDo List d05:
+* Front-End
+  * Delete/Edit Articles Page . ( Meznah )
+  * Cart Page Css  ( Tala )
+  * Some Update for UI elements. ( Asim )
+* Back-End
+  * Delete/Edit Articles Page . ( Meznah )
+  * Cart Page. ( Asim )
+  * Articles Page. ( tala )
+
+  
+ToDo List d06:
+* Front-End
+  *  Cart Algorithm ( Tala )
+  * Add/Show Articles & Update Cart Page & Qty. ( Asim )
+  * signup validation and edit article for user ( Meznah )
+* Back-End
+  * Add/Show Articles & Update Cart Page & Qty. ( Asim )
+  *  Cart Algorithm ( Tala )
+
+ToDo List d07:
+* Front-End/ Back-End
+  * Add to search in navbar update the Ui & add views. ( Asim )
+  * Make search for products & user profile ( Tala )
+  * fixed some bugs & add number of itemes in cart (Meznah)
+
+ToDo List d08:
+* Front-End/ Back-End
+  * Maintenance for all the website & deploy it on heroku. ( All )
+
 ## Created by 
 * Asim Sami
 * Tala Alghamdi

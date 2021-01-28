@@ -25,7 +25,6 @@ export default function Home(props) {
       <Link
       key={i}
       onClick={() =>{
-        props.oneArticleViews(article._id)
         props.setSelectArticle(article)}
       }
        to={`/${article._id}/article`}

@@ -12,6 +12,7 @@ It is a website that enables users to buy and sell coffee products. Not only tha
 * JSX/CSS
 * Bootstrap 
 * Formik
+* Imgur API
 
 ## Wireframes
 ### Home Page

@@ -1,4 +1,4 @@
-import API_URL from '../apiConfig.js'
+import API_URL from "../apiConfig.js";
 import React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -69,7 +69,6 @@ export default function Admin(props) {
                 setChangeAfterDelete(!changeAfterDelete)
             })
     }
-
     /*    *****    DELETE USER    *****       */
     const deleteUser = (user) => {
         console.log(user._id)
@@ -83,14 +82,12 @@ export default function Admin(props) {
 
 
     /*    *****    MAP ALL ARTICLES    *****       */
-    const allArticles = articles.map((article,i) => {
+    const allArticles = articles.map(article => {
         // console.log(article)
 
         return (
             <>
-                <div 
-                key={i}
-                className='content-container'>
+                <div className='content-container'>
                     <img
                         src={article.img}
                         alt=""
@@ -106,13 +103,11 @@ export default function Admin(props) {
 
 
     /*    *****    MAP ALL PRODUCTS    *****       */
-    const allProducts = products.map((product,i) => {
+    const allProducts = products.map(product => {
 
         return (
             <>
-                <div 
-                key={i}
-                className='content-container'>
+                <div className='content-container'>
                     <img
                         src={product.img}
                         alt=""
@@ -127,13 +122,11 @@ export default function Admin(props) {
 
 
     /*    *****    MAP ALL USERS    *****       */
-    const allUsers = users.map((user,i) => {
+    const allUsers = users.map(user => {
 
         return (
             <>
-                <div
-                 key={i}
-                 className='content-container'>
+                <div className='content-container'>
                     <img
                         src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'
                         alt=""
@@ -161,16 +154,16 @@ export default function Admin(props) {
     if (!props.auth.isLoggedIn) {
         return (
             <>
-                <div className="alert alert-danger" role="alert">
-                    <strong>Oh !!!</strong> <Link to="/login" className="alert-link">You have to login first</Link> and try submitting again.
+                <div class="alert alert-danger" role="alert">
+                    <strong>Oh !!!</strong> <Link to="/login" class="alert-link">You have to login first</Link> and try submitting again.
                 </div>
             </>
         )
     } else if (!props.auth.currentUser.isAdmin) {
         return (
             <>
-                <div className="alert alert-warning" role="alert">
-                    <strong>Oh !!!</strong> <Link to="/" className="alert-link">You dont have permission</Link>  to access this page.
+                <div class="alert alert-warning" role="alert">
+                    <strong>Oh !!!</strong> <Link to="/" class="alert-link">You dont have permission</Link>  to access this page.
                 </div>
             </>
         )

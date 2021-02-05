@@ -20,7 +20,7 @@ export default function Forgot(props) {
     event.preventDefault();
     axios.post(`${API_URL}/api/user/forgot`, credentials)
       .then((res) => {
-        console.log("Express backend /forgot response", res);
+        // console.log("Express backend /forgot response", res);
 
         const token = res.data.token;
         const msg = res.data.msg;
@@ -30,7 +30,7 @@ export default function Forgot(props) {
           props.loginCallback();
           history.push("/login");
         } else {
-          console.log("Login error: ", msg);
+          // console.log("Login error: ", msg);
         }
       });
   };

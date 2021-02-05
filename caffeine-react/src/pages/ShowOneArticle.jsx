@@ -45,7 +45,7 @@ export default function ShowOneArticle(props) {
                     let article = res.data.msg.find(ele => ele._id == article_id)
                     setSelectArticle(article)
                     //data.msg[0]._id
-                    console.log(res.data)
+                    // console.log(res.data)
                     oneArticleViews(article_id)
                 })
 
@@ -60,7 +60,7 @@ export default function ShowOneArticle(props) {
         .put(`${API_URL}/api/article/views/${articleId}`)
         .then((res) => {
           // setOneArticleViwer('done')
-          console.log("done");
+        //   console.log("done");
         })
         .catch((err) => {
           console.log(err);
@@ -77,19 +77,19 @@ export default function ShowOneArticle(props) {
     }
 
     const onChangeArticle = (e) => {
-        console.log("event",e.target)
+        // console.log("event",e.target)
         const { name, value } = e.target;
         setUpdateArticle({
             ...updateArticle,
             [name]: value,
         });
 
-        console.log(updateArticle)
+        // console.log(updateArticle)
     };
 
     const editArticle = (articleId) => {
         
-        console.log(selectArtcile)
+        // console.log(selectArtcile)
         axios.put(`${API_URL}/api/article/${articleId}/edit`, {...updateArticle, id: props.auth.currentUser._id })
             .then(data => {
 

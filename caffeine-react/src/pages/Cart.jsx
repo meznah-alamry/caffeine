@@ -37,7 +37,7 @@ export default function Cart(props) {
         setCheckOutState(true)
       }
       setAluserProducts(res.data.user.products);
-      console.log(res.data.user.products)
+      // console.log(res.data.user.products)
     });
   }, [changeOnDelete]);
 
@@ -48,7 +48,7 @@ export default function Cart(props) {
         
         setChangeOnDelete(!changeOnDelete);
 
-        console.log("cart page", res);
+        // console.log("cart page", res);
       });
   };
   const uniqueProducts = [];
@@ -70,7 +70,7 @@ export default function Cart(props) {
     alluserProducts.forEach((product) => {
       total = total +(parseInt(product.oneProduct.id.price)*parseInt(product.oneProduct.qty));
 
-      console.log("product", product);
+      // console.log("product", product);
     });
     return total;
   };
@@ -134,25 +134,24 @@ export default function Cart(props) {
   }
 
   function deleteOrder() {
-    console.log('asim')
     axios
       .delete(`${API_URL}/api/user/cart/delete-order/${userId}`)
       .then((res) => {
         setChangeOnDelete(!changeOnDelete);
         setCheckOutState(false)
-        console.log("order-deleted", res);
+        // console.log("order-deleted", res);
 
         setTimeout(()=>{
           setModalShow(true)
           setOrder(res)
-          console.log('order',order)
+          // console.log('order',order)
         }, 100);
 
         
       });
   }
   props.SetProductLenght(alluserProducts.length)
-  console.log("from cart",alluserProducts.length)
+  // console.log("from cart",alluserProducts.length)
   return (
     <div className="Cart">
       <div style={{

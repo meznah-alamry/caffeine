@@ -9,7 +9,7 @@ export default function NavBar(props) {
   const [searchTerm, setSearchTerm] = useState("");
 
  
-console.log("from navbar", props.productLenght)
+// console.log("from navbar", props.productLenght)
   return (
     <div className="NavBar">
       <Navbar className="navbar" variant="dark">
@@ -129,7 +129,7 @@ console.log("from navbar", props.productLenght)
               <Button variant="dark"
               style={{margin: 'auto 10px auto 10px', height: '100%'}}
                 onClick={() => {
-                  console.log("Logging Out!");
+                  // console.log("Logging Out!");
                   localStorage.removeItem("jwtToken");
                   props.loginCallback();
                 }}

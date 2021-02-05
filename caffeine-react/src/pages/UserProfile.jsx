@@ -24,7 +24,7 @@ export default function UserProfile(props) {
               setUserForProfile(UserForProfile);
  
               // setOneArticleViwer('done')
-              console.log(UserForProfile)
+              // console.log(UserForProfile)
         
             }).catch(err=>{console.log(err)})
         
@@ -41,7 +41,7 @@ export default function UserProfile(props) {
         
           axios.get(`${API_URL}/api/user/users`).then((res) => {
             let UserForProfile = res.data.msg.find((ele) => ele._id == _id);
-            console.log("from user profile"+res.data.msg)
+            // console.log("from user profile"+res.data.msg)
             setUserForProfile(UserForProfile);
           });
         

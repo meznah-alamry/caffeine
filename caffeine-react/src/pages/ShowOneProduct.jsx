@@ -14,13 +14,13 @@ export default function ShowOneProduct(props) {
 
   const { title, img, description, price, state, qty } = selectProduct;
   const userId = props.auth.currentUser;
-  console.log(id)
+  // console.log(id)
   
   useEffect(() => {
     if (!title) {
       axios.get(`${API_URL}/api/product/products/?=${id}`)
       .then(res => {
-        console.log(res.data.msg)
+        // console.log(res.data.msg)
         let product = res.data.msg.find((ele) => ele._id == id);
         setSelectProduct(product);
       })
@@ -39,7 +39,7 @@ export default function ShowOneProduct(props) {
     axios
       .put(`${API_URL}/api/user/${userId._id}/${selectProduct._id}`,product )
       .then((res) => {
-        console.log(res.data.msg);
+        // console.log(res.data.msg);
       });
   };
 

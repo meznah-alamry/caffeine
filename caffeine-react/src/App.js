@@ -66,7 +66,7 @@ function App() {
     }
 
     setDataloading(true);
-    console.log("The current User is: ", auth.currentUser);
+    // console.log("The current User is: ", auth.currentUser);
   };
 
   useEffect(userLogin, []);

@@ -43,7 +43,7 @@ export default function Admin(props) {
         if(e==false&&isAdmin==true || e==true&&isAdmin==false){
             axios.put(`${API_URL}/api/admin/${user._id}`, {isAdmin: isAdmin})
             .then(res=>{
-                console.log(res)
+                // console.log(res)
             })
         }
     }
@@ -61,7 +61,7 @@ export default function Admin(props) {
 
     /*    *****    DELETE PRODUCT    *****       */
     const deleteProduct = (product) => {
-        console.log(product._id)
+        // console.log(product._id)
         const productId = product._id;
         axios.delete(`${API_URL}/api/admin/${productId}`)
             .then(data => {
@@ -71,7 +71,7 @@ export default function Admin(props) {
     }
     /*    *****    DELETE USER    *****       */
     const deleteUser = (user) => {
-        console.log(user._id)
+        // console.log(user._id)
         const userId = user._id;
         axios.delete(`${API_URL}/api/admin/${userId}/deleteuser`)
             .then(data => {

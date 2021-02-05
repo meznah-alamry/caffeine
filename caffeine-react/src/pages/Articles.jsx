@@ -23,7 +23,7 @@ articles.sort((b, a) => a.views - b.views)
 
   // sort array of objects (articles) by bigest views to lower.
 
-  console.log("articles ", articles);
+  // console.log("articles ", articles);
 
   const oneArticleViews = (articleId) => {
     // axios
@@ -83,7 +83,7 @@ articles.sort((b, a) => a.views - b.views)
     );
   });
 
-  console.log('All articles:::', allArticles)
+  // console.log('All articles:::', allArticles)
 
   return (
     <div className="Articles">

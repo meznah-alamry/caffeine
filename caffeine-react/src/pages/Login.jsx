@@ -14,7 +14,7 @@ const validationSchema = Yup.object({
 export default function Login(props) {
   const history = useHistory();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
-  console.log(API_URL)
+  // console.log(API_URL)
   const [login, setLogin] = useState(true); // to show alert
   // const onChangeInput = (event) => {
   //   const { name, value } = event.target;
@@ -30,7 +30,7 @@ export default function Login(props) {
     axios
       .post(`${API_URL}/api/user/login`, values)
       .then((res) => {
-        console.log("Express backend /login response", res);
+        // console.log("Express backend /login response", res);
 
         const token = res.data.token;
         const msg = res.data.msg;
@@ -40,7 +40,7 @@ export default function Login(props) {
           props.loginCallback();
           history.push("/");
         } else {
-          console.log("Login error: ", msg);
+          // console.log("Login error: ", msg);
           setLogin(false);
           setTimeout(() => {
             setLogin(true);

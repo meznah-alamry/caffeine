@@ -4,7 +4,7 @@ import { Button, Card, Col, Row, Form } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 export default function OneCardProduct(props) {
     const product = props.product.oneProduct;
-    console.log('aaa',product.qty)
+    // console.log('aaa',product.qty)
 
     const numbersOfQty = 30;
 

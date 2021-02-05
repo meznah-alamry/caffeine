@@ -13,7 +13,7 @@ export default function Products(props) {
 
     // const sreach = (event) =>{setSearchTerm(event.target.value)} 
     let term = props.search;
-   console.log("search in product " + term);
+  //  console.log("search in product " + term);
 
 
 
